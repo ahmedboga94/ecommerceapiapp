@@ -1,4 +1,4 @@
-import 'package:ecommerceapiapp/core/utils/app_assets.dart';
+import 'package:ecommerceapiapp/core/constants/app_assets.dart';
 import 'package:flutter/material.dart';
 
 class OnBordingView extends StatelessWidget {
