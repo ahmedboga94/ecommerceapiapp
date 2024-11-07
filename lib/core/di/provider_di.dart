@@ -1,10 +1,9 @@
-import 'package:ecommerceapiapp/core/di/init_di.dart';
-import 'package:ecommerceapiapp/features/presentation/provider/settings/language_provider.dart';
+import '../../features/presentation/provider/settings/language_provider.dart';
+import '../../features/presentation/provider/settings/theme_provider.dart';
+import 'init_di.dart';
 
 providerDi() {
   // settings
-  di.registerFactory(() => LanguageProvider(
-        getLanguageUseCase: di(),
-        saveLanguageUseCase: di(),
-      ));
+  di.registerFactory(() => ThemeProvider(di()));
+  di.registerFactory(() => LanguageProvider(di()));
 }

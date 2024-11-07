@@ -4,7 +4,7 @@ class AppStrings {
   static const String lightTheme = "lightTheme";
   static const String darkTheme = "darkTheme";
 
-  static const String setLang = "locale";
+  static const String setLanguage = "language";
   static const String setEnglish = "en";
   static const String setArabic = "ar";
 }
