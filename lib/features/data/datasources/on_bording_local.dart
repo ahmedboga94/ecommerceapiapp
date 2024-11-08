@@ -5,25 +5,25 @@ List<OnBoardingModel> onBoardingDataList = [
   OnBoardingModel(
     title: "Choose Product",
     body:
-        "We Hove a 100k+ Products Choose Your product from our E-commerce shop.",
-    image: AppAssets.onBording1,
+        "We Have a 100k+ Products Choose\nYour product from our\nE-commerce shop.",
+    image: AppAssets.shopping,
   ),
   OnBoardingModel(
     title: "Easy & Sate Payment",
     body:
-        "Easy Checkout & Safe Payment method. Trusted by our Customers from all over the world.",
-    image: AppAssets.onBording3,
+        "Easy Checkout & Safe Paymentmethod.\nTrusted by our Customers\nfrom all over the world.",
+    image: AppAssets.payOnline,
   ),
   OnBoardingModel(
     title: "Track Your Order",
     body:
-        "Best Tracker has been Used For Track your order. Youil know where your product is at the moment.",
-    image: AppAssets.onBording2,
+        "Best Tracker has been Used For Track\nyour order. You will know where\nyour product is at the moment.",
+    image: AppAssets.shoppingBags,
   ),
   OnBoardingModel(
     title: "Fast Delivery",
     body:
-        "Reliable And Fast Delivery. We Deliver your product the fastest way possible.",
-    image: AppAssets.onBording3,
+        "Reliable And Fast Delivery. We\nDeliver your product the fastest\nway possible.",
+    image: AppAssets.onTheWay,
   ),
 ];

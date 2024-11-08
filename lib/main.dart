@@ -1,6 +1,7 @@
 import 'package:ecommerceapiapp/core/di/init_di.dart';
 import 'package:ecommerceapiapp/core/enums/language_enum.dart';
 import 'package:ecommerceapiapp/core/enums/theme_enum.dart';
+import 'package:ecommerceapiapp/core/utils/app_theme.dart';
 import 'package:ecommerceapiapp/features/presentation/provider/settings/theme_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
@@ -34,8 +35,8 @@ class MyApp extends StatelessWidget {
           return MaterialApp.router(
             debugShowCheckedModeBanner: false,
             title: "E-Commerce App",
-            theme: ThemeData.light(),
-            darkTheme: ThemeData.dark(),
+            theme: AppThemes.lightTheme,
+            darkTheme: AppThemes.darkTheme,
             themeMode: theme.selectedTheme == ThemeEnum.lightTheme
                 ? ThemeMode.light
                 : theme.selectedTheme == ThemeEnum.darkTheme

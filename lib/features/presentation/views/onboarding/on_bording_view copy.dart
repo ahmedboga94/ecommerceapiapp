@@ -19,7 +19,7 @@ class OnBordingView extends StatelessWidget {
       body: SafeArea(
         child: Column(
           children: [
-            Image.asset(AppAssets.onBording1),
+            Image.asset(AppAssets.avatar),
             Text(translation(context).notesId),
             Row(
               children: [
