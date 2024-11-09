@@ -2,10 +2,12 @@ import 'package:go_router/go_router.dart';
 
 import '../../features/presentation/views/auth/login/login_view.dart';
 import '../../features/presentation/views/onboarding/on_bording_view.dart';
+import '../../features/presentation/views/quick_settings/quick_settings_view.dart';
 
 class AppRoutes {
   // static const String splashView = "/";
-  static const String onBordingView = "/";
+  static const String quickSettingsView = "/";
+  static const String onBordingView = "/onBordingView";
   static const String loginView = "/loginView";
 
   static const String mainView = "/mainView";
@@ -15,6 +17,10 @@ class AppRoutes {
 
   static final GoRouter router = GoRouter(
     routes: [
+      GoRoute(
+        path: quickSettingsView,
+        builder: (context, state) => const QuickSettingsView(),
+      ),
       GoRoute(
         path: onBordingView,
         builder: (context, state) => const OnBordingView(),

@@ -1,6 +1,7 @@
 class AppAssets {
   static const String appLogo = "assets/images/notes-logo.png";
 
+  static const String welcoming = "assets/images/welcoming.svg";
   static const String shopping = "assets/images/shopping.svg";
   static const String shoppingBags = "assets/images/shopping_bags.svg";
   static const String payOnline = "assets/images/pay_online.svg";

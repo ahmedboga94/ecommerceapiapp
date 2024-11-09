@@ -18,10 +18,7 @@ class OnBoardingButton extends StatelessWidget {
         onPressed: onBoarding.currentPage == onBoardingDataList.length - 1
             ? () => context.go(AppRoutes.loginView)
             : () => onBoarding.animateTo(),
-        child: Text(
-          onBoarding.currentPage == 0 ? "Let's Go" : "Continue",
-          style: AppTextStyles.mediumRegular,
-        ),
+        child: const Text("Continue", style: AppTextStyles.mediumRegular),
       ),
     );
   }
