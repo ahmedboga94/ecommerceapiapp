@@ -12,13 +12,16 @@ class OnBoardingButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    bool isCurrentPage =
+        onBoarding.currentPage == onBoardingDataList.length - 1;
     return SizedBox(
       width: double.infinity,
       child: ElevatedButton(
-        onPressed: onBoarding.currentPage == onBoardingDataList.length - 1
+        onPressed: isCurrentPage
             ? () => context.go(AppRoutes.loginView)
             : () => onBoarding.animateTo(),
-        child: const Text("Continue", style: AppTextStyles.mediumRegular),
+        child: Text(isCurrentPage ? "Get Started" : "Continue",
+            style: AppTextStyles.mediumRegular),
       ),
     );
   }
