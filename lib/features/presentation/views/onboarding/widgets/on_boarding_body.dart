@@ -19,6 +19,7 @@ class OnBoardingBody extends StatelessWidget {
             padding: const EdgeInsets.symmetric(horizontal: 25, vertical: 12),
             child: Column(
               children: [
+                const SizedBox(height: 20),
                 OnBoardingViewBuilder(
                   onPageChanged: (currentPage) =>
                       onBoarding.onPageChanged(currentPage),

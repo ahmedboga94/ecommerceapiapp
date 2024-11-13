@@ -9,6 +9,8 @@ class AppThemes {
       primaryColor: AppColors.primeColor,
       focusColor: AppColors.primeColor,
       scaffoldBackgroundColor: AppColors.whiteColor,
+      appBarTheme: const AppBarTheme(
+          backgroundColor: AppColors.whiteColor, centerTitle: true),
       snackBarTheme: const SnackBarThemeData(
           backgroundColor: AppColors.darkColor,
           contentTextStyle: TextStyle(color: AppColors.lightGreyColor)),
@@ -29,10 +31,10 @@ class AppThemes {
       inputDecorationTheme: InputDecorationTheme(
         focusedBorder: OutlineInputBorder(
             borderSide: const BorderSide(color: AppColors.primeColor, width: 2),
-            borderRadius: BorderRadius.circular(14)),
+            borderRadius: BorderRadius.circular(18.0)),
         border: OutlineInputBorder(
             borderSide: const BorderSide(width: 2),
-            borderRadius: BorderRadius.circular(14)),
+            borderRadius: BorderRadius.circular(18.0)),
         floatingLabelStyle: const TextStyle(color: AppColors.primeColor),
       ),
       elevatedButtonTheme: ElevatedButtonThemeData(
@@ -40,7 +42,7 @@ class AppThemes {
           backgroundColor: AppColors.primeColor,
           foregroundColor: AppColors.lightGreyColor,
           shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(14.0),
+            borderRadius: BorderRadius.circular(18.0),
           ),
         ),
       ),
@@ -55,6 +57,8 @@ class AppThemes {
     brightness: Brightness.dark,
     primaryColor: AppColors.darkColor,
     scaffoldBackgroundColor: AppColors.lessdarkColor,
+    appBarTheme: const AppBarTheme(
+        backgroundColor: AppColors.lessdarkColor, centerTitle: true),
     snackBarTheme: const SnackBarThemeData(
         backgroundColor: AppColors.darkColor,
         contentTextStyle: TextStyle(color: AppColors.lightGreyColor)),
@@ -75,10 +79,10 @@ class AppThemes {
     inputDecorationTheme: InputDecorationTheme(
       focusedBorder: OutlineInputBorder(
           borderSide: const BorderSide(color: AppColors.primeColor, width: 2),
-          borderRadius: BorderRadius.circular(14)),
+          borderRadius: BorderRadius.circular(18.0)),
       border: OutlineInputBorder(
           borderSide: const BorderSide(width: 2),
-          borderRadius: BorderRadius.circular(14)),
+          borderRadius: BorderRadius.circular(18.0)),
       floatingLabelStyle: const TextStyle(color: AppColors.lightGreyColor),
     ),
     dialogTheme: const DialogTheme(backgroundColor: AppColors.lessdarkColor),
@@ -87,7 +91,7 @@ class AppThemes {
         backgroundColor: AppColors.primeColor,
         foregroundColor: AppColors.whiteColor,
         shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(14.0),
+          borderRadius: BorderRadius.circular(18.0),
         ),
       ),
     ),

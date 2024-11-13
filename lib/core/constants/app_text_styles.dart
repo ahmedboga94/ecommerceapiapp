@@ -19,6 +19,10 @@ class AppTextStyles {
     fontSize: 22,
   );
 
+  static const headLineRegular = TextStyle(
+    fontSize: 26,
+  );
+
   // Bold Text
   static const smallBold = TextStyle(
     fontWeight: FontWeight.bold,
@@ -39,6 +43,10 @@ class AppTextStyles {
   static const largeBold = TextStyle(
     fontWeight: FontWeight.bold,
     fontSize: 22,
+  );
+  static const headLineBold = TextStyle(
+    fontWeight: FontWeight.bold,
+    fontSize: 26,
   );
 
   // Colored Text
