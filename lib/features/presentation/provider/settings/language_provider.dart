@@ -45,6 +45,17 @@ class LanguageProvider extends ChangeNotifier {
     );
   }
 
+  Locale? choosingLanguage() {
+    switch (_selectedLanguage) {
+      case LangEnum.englishLang:
+        return const Locale(AppStrings.setEnglish);
+      case LangEnum.arabicLang:
+        return const Locale(AppStrings.setArabic);
+      default:
+        return null;
+    }
+  }
+
   void clearError() {
     _errorMessage = null;
     notifyListeners();

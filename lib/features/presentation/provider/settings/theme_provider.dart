@@ -45,6 +45,17 @@ class ThemeProvider extends ChangeNotifier {
     );
   }
 
+  ThemeMode choosingTheme() {
+    switch (_selectedTheme) {
+      case ThemeEnum.lightTheme:
+        return ThemeMode.light;
+      case ThemeEnum.darkTheme:
+        return ThemeMode.dark;
+      default:
+        return ThemeMode.system;
+    }
+  }
+
   void clearError() {
     _errorMessage = null;
     notifyListeners();
