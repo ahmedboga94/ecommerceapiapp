@@ -1,7 +1,10 @@
+import 'package:ecommerceapiapp/core/utils/app_routes.dart';
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 
 import '../../../../../core/constants/app_text_styles.dart';
 import '../../../widgets/custom_text_form.dart';
+import '../widgets/auth_headline.dart';
 
 class ForgetPasswordView extends StatelessWidget {
   const ForgetPasswordView({super.key});
@@ -16,14 +19,10 @@ class ForgetPasswordView extends StatelessWidget {
         padding: const EdgeInsets.symmetric(horizontal: 30, vertical: 20),
         child: Column(
           children: [
-            const Text("Check Email", style: AppTextStyles.headLineBold),
-            const Padding(
-              padding: EdgeInsets.symmetric(horizontal: 50, vertical: 20),
-              child: Text(
-                  "Sign in your Email and Password or continue With Social Media",
-                  textAlign: TextAlign.center,
-                  style: AppTextStyles.mediumRegular),
-            ),
+            const AuthHeadline(
+                headline: "Check Email",
+                subHeadline:
+                    "Sign in your Email and Password or continue With Social Media"),
             CustomTextForm(
               hint: "Enter Your Email",
               icon: const Icon(Icons.email_outlined),
@@ -33,7 +32,12 @@ class ForgetPasswordView extends StatelessWidget {
             const SizedBox(height: 25),
             SizedBox(
               width: double.infinity,
-              child: ElevatedButton(onPressed: () {}, child: Text("Check")),
+              child: ElevatedButton(
+                onPressed: () {
+                  context.push(AppRoutes.verfiyCodeView);
+                },
+                child: const Text("Check"),
+              ),
             )
           ],
         ),

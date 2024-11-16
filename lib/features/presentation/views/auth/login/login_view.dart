@@ -5,6 +5,7 @@ import 'package:go_router/go_router.dart';
 import '../../../../../core/constants/app_colors.dart';
 import '../../../../../core/constants/app_text_styles.dart';
 import '../../../widgets/custom_text_form.dart';
+import '../widgets/auth_headline.dart';
 
 class LoginView extends StatelessWidget {
   const LoginView({super.key});
@@ -20,14 +21,10 @@ class LoginView extends StatelessWidget {
         child: SingleChildScrollView(
           child: Column(
             children: [
-              const Text("Welcome Back", style: AppTextStyles.headLineBold),
-              const Padding(
-                padding: EdgeInsets.symmetric(horizontal: 50, vertical: 20),
-                child: Text(
-                    "Sign in your Email and Password or continue With Social Media",
-                    textAlign: TextAlign.center,
-                    style: AppTextStyles.mediumRegular),
-              ),
+              const AuthHeadline(
+                  headline: "Welcome Back",
+                  subHeadline:
+                      "Sign in your Email and Password or continue With Social Media"),
               const SizedBox(height: 45),
               CustomTextForm(
                 hint: "Enter Your E-Mail",
@@ -48,12 +45,13 @@ class LoginView extends StatelessWidget {
                   alignment: Alignment.centerRight,
                   child: TextButton(
                     onPressed: () => context.push(AppRoutes.forgetPasswordView),
-                    child: Text("Forget Password?"),
+                    child: const Text("Forget Password?"),
                   )),
               const SizedBox(height: 25),
               SizedBox(
                 width: double.infinity,
-                child: ElevatedButton(onPressed: () {}, child: Text("Login")),
+                child: ElevatedButton(
+                    onPressed: () {}, child: const Text("Login")),
               ),
               const SizedBox(height: 20),
               const Divider(),
@@ -62,7 +60,7 @@ class LoginView extends StatelessWidget {
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      Text("If you don't have an account, "),
+                      const Text("If you don't have an account, "),
                       Text("Click Here!",
                           style: AppTextStyles.bold
                               .copyWith(color: AppColors.primeColor)),

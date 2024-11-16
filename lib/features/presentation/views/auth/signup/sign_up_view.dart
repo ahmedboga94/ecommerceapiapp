@@ -5,6 +5,7 @@ import '../../../../../core/constants/app_colors.dart';
 import '../../../../../core/constants/app_text_styles.dart';
 import '../../../../../core/utils/app_routes.dart';
 import '../../../widgets/custom_text_form.dart';
+import '../widgets/auth_headline.dart';
 
 class SignUpView extends StatelessWidget {
   const SignUpView({super.key});
@@ -20,10 +21,9 @@ class SignUpView extends StatelessWidget {
         child: SingleChildScrollView(
           child: Column(
             children: [
-              const Text("Create Account", style: AppTextStyles.headLineBold),
-              const Text("Sign up with your Email and Password",
-                  textAlign: TextAlign.center,
-                  style: AppTextStyles.mediumRegular),
+              const AuthHeadline(
+                  headline: "Create Account",
+                  subHeadline: "Sign up with your Email and Password"),
               const SizedBox(height: 35),
               CustomTextForm(
                 hint: "Enter Your Name",
@@ -66,7 +66,8 @@ class SignUpView extends StatelessWidget {
               const SizedBox(height: 35),
               SizedBox(
                 width: double.infinity,
-                child: ElevatedButton(onPressed: () {}, child: Text("Sign Up")),
+                child: ElevatedButton(
+                    onPressed: () {}, child: const Text("Sign Up")),
               ),
               const SizedBox(height: 20),
               const Divider(),
@@ -75,7 +76,7 @@ class SignUpView extends StatelessWidget {
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      Text("If you have an account, "),
+                      const Text("If you have an account, "),
                       Text("Click Here!",
                           style: AppTextStyles.bold
                               .copyWith(color: AppColors.primeColor)),
