@@ -5,6 +5,9 @@ import '../../../../core/constants/app_strings.dart';
 class LoginProvider extends ChangeNotifier {
   final GlobalKey<FormState> _formKey = GlobalKey();
   final RegExp _regexMail = RegExp(AppStrings.mailValidate);
+
+  String email = "";
+  String password = "";
   bool _isloading = false;
   bool _isPassVisible = true;
 

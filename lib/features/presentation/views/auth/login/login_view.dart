@@ -17,7 +17,10 @@ class LoginView extends StatelessWidget {
           "Login",
           style: AppTextStyles.largeRegular,
         )),
-        body: const LoginViewBody(),
+        body: const PopScope(
+          canPop: false,
+          child: LoginViewBody(),
+        ),
       ),
     );
   }

@@ -91,9 +91,9 @@ class SignUpViewBody extends StatelessWidget {
                   SizedBox(
                     width: double.infinity,
                     child: ElevatedButton(
-                        onPressed: () {
-                          signUpProvider.signUpWithEmailandPassword();
-                        },
+                        onPressed: signUpProvider.isLoading
+                            ? null
+                            : () => signUpProvider.signUpWithEmailandPassword(),
                         child: signUpProvider.isLoading
                             ? const AuthLoadingIndicator()
                             : const Text("Sign Up")),

@@ -14,12 +14,14 @@ class OnBoardingProvider extends ChangeNotifier {
 
   void animateTo() {
     _currentPage++;
-
     _pageController.animateToPage(
       _currentPage,
       duration: const Duration(milliseconds: 500),
       curve: Curves.easeIn,
     );
+    // if (_currentPage == onBoardingDataList.length - 1) {
+    //   di<SharedPreferences>().setBool("finalPage", true);
+    // }
   }
 
   @override

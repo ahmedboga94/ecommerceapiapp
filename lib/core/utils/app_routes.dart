@@ -1,5 +1,4 @@
 import 'package:go_router/go_router.dart';
-
 import '../../features/presentation/views/auth/forget_password/forget_password_view.dart';
 import '../../features/presentation/views/auth/login/login_view.dart';
 import '../../features/presentation/views/auth/reset_password/reset_password_view.dart';
@@ -23,11 +22,16 @@ class AppRoutes {
   static const String noteEditView = "/noteEditView";
   static const String settingsView = "/settingsView";
 
+  // static final setFinalPage = di<SharedPreferences>().getBool("finalPage");
+
   static final GoRouter router = GoRouter(
     routes: [
       GoRoute(
         path: quickSettingsView,
-        builder: (context, state) => const QuickSettingsView(),
+        builder: (context, state) =>
+            // setFinalPage != null
+            //     ? const LoginView():
+            const QuickSettingsView(),
       ),
       GoRoute(
         path: onBordingView,

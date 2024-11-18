@@ -35,9 +35,7 @@ class LoginViewBody extends StatelessWidget {
                     validator: (value) => loginProvider.emailValidator(value!,
                         hintEmail: "Enter Your Mail First",
                         hintVaildEmail: "Enter Vaild Email"),
-                    onChanged: (val) {
-                      print("$val============");
-                    },
+                    onChanged: (val) => loginProvider.email = val,
                   ),
                   const SizedBox(height: 25),
                   CustomTextForm(
@@ -51,7 +49,7 @@ class LoginViewBody extends StatelessWidget {
                     validator: (value) => loginProvider.passwordValidator(
                         value!,
                         hintPass: "Enter Your Password to continue"),
-                    onChanged: (val) {},
+                    onChanged: (val) => loginProvider.password = val,
                   ),
                   const SizedBox(height: 8),
                   Align(
@@ -65,9 +63,9 @@ class LoginViewBody extends StatelessWidget {
                   SizedBox(
                     width: double.infinity,
                     child: ElevatedButton(
-                        onPressed: () {
-                          loginProvider.loginWithEmailandPassword();
-                        },
+                        onPressed: loginProvider.isLoading
+                            ? null
+                            : () => loginProvider.loginWithEmailandPassword(),
                         child: loginProvider.isLoading
                             ? const AuthLoadingIndicator()
                             : const Text("Login")),
