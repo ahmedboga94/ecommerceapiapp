@@ -28,6 +28,7 @@ class CustomTextForm extends StatelessWidget {
       controller: controller,
       onChanged: onChanged,
       obscureText: secureText,
+      autovalidateMode: AutovalidateMode.onUserInteraction,
       validator: validator,
       keyboardType: keyboardType,
       decoration: InputDecoration(

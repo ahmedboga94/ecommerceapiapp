@@ -7,4 +7,8 @@ class AppStrings {
   static const String setLanguage = "language";
   static const String setEnglish = "en";
   static const String setArabic = "ar";
+
+  static String mailValidate =
+      r"^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+";
+  static String passwordValidate = r"^(?=.*?[a-z])(?=.*?[0-9]).{8,}$";
 }

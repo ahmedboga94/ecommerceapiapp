@@ -1,3 +1,4 @@
+import 'package:ecommerceapiapp/core/utils/app_translate_keys.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -35,10 +36,13 @@ class LanguageToggleButtons extends StatelessWidget {
             break;
         }
       },
-      children: const [
-        Padding(padding: EdgeInsets.all(12), child: Text("ENG")),
-        Padding(padding: EdgeInsets.all(12), child: Text("System")),
-        Padding(padding: EdgeInsets.all(12), child: Text("ARA")),
+      children: [
+        Padding(
+            padding: const EdgeInsets.all(12), child: Text(context.englishKey)),
+        Padding(
+            padding: const EdgeInsets.all(12), child: Text(context.systemKey)),
+        Padding(
+            padding: const EdgeInsets.all(12), child: Text(context.arabicKey)),
       ],
     );
   }

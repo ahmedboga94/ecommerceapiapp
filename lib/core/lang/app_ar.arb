@@ -1,4 +1,9 @@
 {
-  "notesId" : "الملاحظات"
+  "chooseFavLangId" : "اختر اللغة المفضلة",
+  "chooseFavThemeId":"اختر المظهر المفضل",
+  "letsGoId":"لننطلق",
+  "englishId":"الإنجليزية",
+  "arabicId":"العربية",
+  "systemId":"لغة النظام"
 
 }

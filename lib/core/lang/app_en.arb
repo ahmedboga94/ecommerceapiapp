@@ -1,4 +1,9 @@
 {
-  "notesId" : "Notes"
+  "chooseFavLangId" : "Choose Your Favourite Language",
+  "chooseFavThemeId":"Choose Your Favourite Theme",
+  "letsGoId":"Let's Go",
+  "englishId":"English",
+  "arabicId":"Arabic",
+  "systemId":"System"
 
 }

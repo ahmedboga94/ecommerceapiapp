@@ -1,3 +1,4 @@
+import 'package:ecommerceapiapp/core/utils/app_translate_keys.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:go_router/go_router.dart';
@@ -23,13 +24,11 @@ class QuickSettingsView extends StatelessWidget {
             const Spacer(flex: 2),
             SizedBox(height: 240, child: SvgPicture.asset(AppAssets.welcoming)),
             const Spacer(),
-            const Text("Choose Your Favourite Language",
-                style: AppTextStyles.mediumRegular),
+            Text(context.chooseFavLangKey, style: AppTextStyles.mediumRegular),
             const SizedBox(height: 10),
             const Center(child: LanguageToggleButtons()),
             const SizedBox(height: 50),
-            const Text("Choose Your Favourite Theme",
-                style: AppTextStyles.mediumRegular),
+            Text(context.chooseFavThemeKey, style: AppTextStyles.mediumRegular),
             const SizedBox(height: 10),
             const Center(child: ThemeToggleButtons()),
             const Spacer(flex: 4),
@@ -37,7 +36,7 @@ class QuickSettingsView extends StatelessWidget {
               width: double.infinity,
               child: ElevatedButton(
                   onPressed: () => context.push(AppRoutes.onBordingView),
-                  child: const Text("Let's Go",
+                  child: Text(context.letsGoKey,
                       style: AppTextStyles.mediumRegular)),
             ),
             const Spacer(),

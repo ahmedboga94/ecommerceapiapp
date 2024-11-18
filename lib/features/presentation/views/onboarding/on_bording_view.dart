@@ -11,9 +11,7 @@ class OnBordingView extends StatelessWidget {
   Widget build(BuildContext context) {
     return ChangeNotifierProvider(
       create: (_) => OnBoardingProvider(),
-      builder: (context, child) {
-        return const OnBoardingBody();
-      },
+      child: const OnBoardingBody(),
     );
   }
 }
