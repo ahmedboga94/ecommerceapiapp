@@ -4,7 +4,7 @@ import '../../../../core/enums/theme_enum.dart';
 import '../../../core/enums/language_enum.dart';
 import '../../../core/utils/failure.dart';
 import '../../domain/repositories/settings_repo.dart';
-import '../datasources/settings_local_storage.dart';
+import '../datasources/local/settings_local_storage.dart';
 
 class SettingsRepoImpl implements SettingsRepo {
   SettingsLocalStorage settingsLocalStorage;
@@ -16,7 +16,7 @@ class SettingsRepoImpl implements SettingsRepo {
       settingsLocalStorage.setTheme(deviceTheme);
       return right(unit);
     } catch (e) {
-      return left(Failure("Error in setting theme"));
+      return left(Failure(message: "Error in setting theme"));
     }
   }
 
@@ -26,7 +26,7 @@ class SettingsRepoImpl implements SettingsRepo {
       settingsLocalStorage.setLanguage(deviceLang);
       return right(unit);
     } catch (e) {
-      return left(Failure("Error in setting Language"));
+      return left(Failure(message: "Error in setting Language"));
     }
   }
 }

@@ -48,6 +48,7 @@ dependencies:
   flutter_svg: ^2.0.14
   carousel_slider: ^5.0.0
   flutter_otp_text_field: ^1.2.0
+  internet_connection_checker: ^1.0.0+1
 
 dev_dependencies:
   flutter_test:

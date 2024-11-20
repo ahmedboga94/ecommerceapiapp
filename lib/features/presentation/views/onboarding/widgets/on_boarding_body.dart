@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-import '../../../../data/datasources/on_bording_local.dart';
+import '../../../../data/datasources/local/on_bording_local.dart';
 import '../../../provider/onboarding/onboarding_provider.dart';
 import '../../../widgets/dots_pointer.dart';
 import 'on_boarding_button.dart';

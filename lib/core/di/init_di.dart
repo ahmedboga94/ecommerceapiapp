@@ -9,9 +9,9 @@ import 'usecase_di.dart';
 final di = GetIt.instance;
 
 Future<void> initDi() async {
-  await providerDi();
-  await useCaseDi();
-  await repoDi();
-  await dataSourceDi();
   await externalDi();
+  await dataSourceDi();
+  await repoDi();
+  await useCaseDi();
+  await providerDi();
 }

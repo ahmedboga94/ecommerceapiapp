@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../../../../data/datasources/on_bording_local.dart';
+import '../../../../data/datasources/local/on_bording_local.dart';
 import 'on_boarding_pics_viewer.dart';
 
 class OnBoardingViewBuilder extends StatelessWidget {

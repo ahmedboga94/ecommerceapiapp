@@ -1,8 +1,8 @@
 import 'package:shared_preferences/shared_preferences.dart';
 
-import '../../../../core/enums/theme_enum.dart';
-import '../../../core/constants/app_strings.dart';
-import '../../../core/enums/language_enum.dart';
+import '../../../../../core/enums/theme_enum.dart';
+import '../../../../core/constants/app_strings.dart';
+import '../../../../core/enums/language_enum.dart';
 
 abstract class SettingsLocalStorage {
   void setTheme(ThemeEnum deviceTheme);

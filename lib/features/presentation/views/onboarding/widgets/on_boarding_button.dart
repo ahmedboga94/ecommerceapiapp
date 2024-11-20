@@ -3,7 +3,7 @@ import 'package:go_router/go_router.dart';
 
 import '../../../../../core/constants/app_text_styles.dart';
 import '../../../../../core/utils/app_routes.dart';
-import '../../../../data/datasources/on_bording_local.dart';
+import '../../../../data/datasources/local/on_bording_local.dart';
 import '../../../provider/onboarding/onboarding_provider.dart';
 
 class OnBoardingButton extends StatelessWidget {
