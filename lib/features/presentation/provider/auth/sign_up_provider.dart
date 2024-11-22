@@ -50,8 +50,8 @@ class SignUpProvider extends ChangeNotifier {
 
           notifyListeners();
         },
-        (_) {
-          debugPrint("Sign Up Successfully");
+        (response) {
+          print("============ ${response["status"]}");
           notifyListeners();
         },
       );

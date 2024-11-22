@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/scheduler.dart';
 import 'package:provider/provider.dart';
+import '../../../../../../core/functions/show_snack_bar.dart';
 import '../../../../provider/auth/sign_up_provider.dart';
 import '../../../../widgets/custom_text_form.dart';
 import '../../widgets/auth_headline.dart';
@@ -13,6 +15,12 @@ class SignUpViewBody extends StatelessWidget {
   Widget build(BuildContext context) {
     return Consumer<SignUpProvider>(
       builder: (context, signUpProvider, child) {
+        if (signUpProvider.errorMessage != null) {
+          SchedulerBinding.instance.addPostFrameCallback((_) {
+            showSnackBar(context, msg: signUpProvider.errorMessage!);
+            signUpProvider.clearError();
+          });
+        }
         return Padding(
           padding: const EdgeInsets.symmetric(horizontal: 30, vertical: 20),
           child: SingleChildScrollView(
@@ -93,7 +101,14 @@ class SignUpViewBody extends StatelessWidget {
                     child: ElevatedButton(
                         onPressed: signUpProvider.isLoading
                             ? null
-                            : () => signUpProvider.signUpWithEmailandPassword(),
+                            : () {
+                                signUpProvider.signUpWithEmailandPassword();
+                                if (signUpProvider.errorMessage == null) {
+                                  // showSnackBar(context,
+                                  //     msg: "We sent code to verfiy your Email");
+                                  // context.push(AppRoutes.verfiyCodeView);
+                                }
+                              },
                         child: signUpProvider.isLoading
                             ? const AuthLoadingIndicator()
                             : const Text("Sign Up")),

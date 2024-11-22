@@ -9,7 +9,7 @@ class SignUpUseCase {
 
   SignUpUseCase(this.authRepo);
 
-  Future<Either<Failure, Unit>> call(UserEntity user) {
+  Future<Either<Failure, Map<String, dynamic>>> call(UserEntity user) {
     return authRepo.signUp(user);
   }
 }

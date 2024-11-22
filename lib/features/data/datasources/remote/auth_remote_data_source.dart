@@ -6,7 +6,7 @@ import '../../models/user_model.dart';
 
 abstract class AuthRemoteDataSource {
   Future<Unit> login(UserModel user);
-  Future<Unit> signUp(UserModel user);
+  Future<Map<String, dynamic>> signUp(UserModel user);
   Future<Unit> verfiyCode(UserModel user);
 }
 
@@ -21,15 +21,12 @@ class AuthRemoteDataSourceImpl implements AuthRemoteDataSource {
   }
 
   @override
-  Future<Unit> signUp(UserModel user) async {
-    final data = {
-      "userName": user.userName,
-      "email": user.email,
-      "phone": user.email,
-      "password": user.password,
-    };
-    await apiService.post(endPoint: AppServerLinks.signupUrl, body: data);
-    return Future.value(unit);
+  Future<Map<String, dynamic>> signUp(UserModel user) async {
+    var response = await apiService.post(
+      endPoint: AppServerLinks.signupUrl,
+      body: user.toJson(),
+    );
+    return response;
   }
 
   @override

@@ -24,7 +24,7 @@ class AuthRepoImpl implements AuthRepo {
   }
 
   @override
-  Future<Either<Failure, Unit>> signUp(UserEntity user) async {
+  Future<Either<Failure, Map<String, dynamic>>> signUp(UserEntity user) async {
     if (await appNetworkChecker.isConnected) {
       try {
         final userModel = UserModel(
@@ -33,9 +33,17 @@ class AuthRepoImpl implements AuthRepo {
           phoneNumber: user.phoneNumber,
           password: user.password,
         );
-        await authRemoteDataSourceImpl.signUp(userModel);
-
-        return right(unit);
+        final response = await authRemoteDataSourceImpl.signUp(userModel);
+        if (response["status"] == "success") {
+          return right(response);
+        } else if (response["status"] == "fail") {
+          return left(
+            Failure(
+                message: response["message"] ?? "Unknown error from server"),
+          );
+        } else {
+          return left(Failure(message: "Unexpected response from server."));
+        }
       } catch (e) {
         if (e is DioException) {
           return left(ServerFaliure.fromDioError(e));

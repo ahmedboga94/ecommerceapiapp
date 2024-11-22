@@ -44,7 +44,7 @@ class ServerFaliure extends Failure {
     } else if (e.response!.statusCode == 400 ||
         e.response!.statusCode == 401 ||
         e.response!.statusCode == 403) {
-      return ServerFaliure(message: e.response!.data["status"]);
+      return ServerFaliure(message: e.response!.data["error"]["message"]);
     } else {
       return ServerFaliure(
           message: "Opps There was an Error, please try again");
