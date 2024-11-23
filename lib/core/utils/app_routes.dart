@@ -55,7 +55,10 @@ class AppRoutes {
       ),
       GoRoute(
         path: verfiyCodeView,
-        builder: (context, state) => const VerfiyCodeView(),
+        builder: (context, state) {
+          final email = state.extra as String;
+          return VerfiyCodeView(email: email);
+        },
       ),
       // GoRoute(
       //   path: mainView,

@@ -1,4 +1,3 @@
-// ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:dartz/dartz.dart';
 import 'package:dio/dio.dart';
 
@@ -36,13 +35,8 @@ class AuthRepoImpl implements AuthRepo {
         final response = await authRemoteDataSourceImpl.signUp(userModel);
         if (response["status"] == "success") {
           return right(response);
-        } else if (response["status"] == "fail") {
-          return left(
-            Failure(
-                message: response["message"] ?? "Unknown error from server"),
-          );
         } else {
-          return left(Failure(message: "Unexpected response from server."));
+          return left(Failure(message: response["message"]));
         }
       } catch (e) {
         if (e is DioException) {
@@ -59,7 +53,7 @@ class AuthRepoImpl implements AuthRepo {
   }
 
   @override
-  Future<Either<Failure, Unit>> verfiyCode(UserEntity user) {
+  Future<Either<Failure, String>> verfiyCode(UserEntity user) {
     // TODO: implement verfiyCode
     throw UnimplementedError();
   }

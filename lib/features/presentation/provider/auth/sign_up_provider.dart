@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 
 import '../../../../core/constants/app_strings.dart';
+import '../../../../core/utils/app_routes.dart';
 import '../../../domain/entities/user_entity.dart';
 import '../../../domain/usecases/auth/sign_up_use_case.dart';
 
@@ -32,7 +34,7 @@ class SignUpProvider extends ChangeNotifier {
     notifyListeners();
   }
 
-  signUpWithEmailandPassword() async {
+  signUpWithEmailandPassword(BuildContext context) async {
     if (_formKey.currentState!.validate()) {
       setLoading(true);
 
@@ -45,13 +47,13 @@ class SignUpProvider extends ChangeNotifier {
       final result = await signUpUseCase.call(user);
       result.fold(
         (failure) {
+          debugPrint("============ ${failure.message}");
           _errorMessage = failure.message;
-          debugPrint(" ========= ${failure.message}");
-
           notifyListeners();
         },
         (response) {
-          print("============ ${response["status"]}");
+          debugPrint("============ ${response["status"]}");
+          context.push(AppRoutes.verfiyCodeView, extra: email);
           notifyListeners();
         },
       );

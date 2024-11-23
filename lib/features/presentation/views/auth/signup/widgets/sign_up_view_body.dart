@@ -101,14 +101,8 @@ class SignUpViewBody extends StatelessWidget {
                     child: ElevatedButton(
                         onPressed: signUpProvider.isLoading
                             ? null
-                            : () {
-                                signUpProvider.signUpWithEmailandPassword();
-                                if (signUpProvider.errorMessage == null) {
-                                  // showSnackBar(context,
-                                  //     msg: "We sent code to verfiy your Email");
-                                  // context.push(AppRoutes.verfiyCodeView);
-                                }
-                              },
+                            : () => signUpProvider
+                                .signUpWithEmailandPassword(context),
                         child: signUpProvider.isLoading
                             ? const AuthLoadingIndicator()
                             : const Text("Sign Up")),
