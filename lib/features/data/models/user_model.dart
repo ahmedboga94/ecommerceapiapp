@@ -7,7 +7,7 @@ class UserModel extends UserEntity {
     super.email,
     super.phoneNumber,
     super.password,
-    super.verfiycode,
+    super.verfiyCode,
     super.approve,
     super.createdAt,
   });
@@ -19,7 +19,7 @@ class UserModel extends UserEntity {
       email: json["email"] as String,
       phoneNumber: json["phone"] as String,
       password: json["password"] as String,
-      verfiycode: json["verfiycode"] as String,
+      verfiyCode: json["verfiyCode"] as String,
       approve: json["approve"] as String,
       createdAt: json["createdAt"] as String,
     );
@@ -31,6 +31,7 @@ class UserModel extends UserEntity {
       "email": email,
       "phone": phoneNumber,
       "password": password,
+      "verfiyCode": verfiyCode,
     };
   }
 }

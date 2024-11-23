@@ -17,12 +17,6 @@ class AuthRepoImpl implements AuthRepo {
   });
 
   @override
-  Future<Either<Failure, Unit>> login(UserEntity user) {
-    // TODO: implement login
-    throw UnimplementedError();
-  }
-
-  @override
   Future<Either<Failure, Map<String, dynamic>>> signUp(UserEntity user) async {
     if (await appNetworkChecker.isConnected) {
       try {
@@ -53,8 +47,35 @@ class AuthRepoImpl implements AuthRepo {
   }
 
   @override
-  Future<Either<Failure, String>> verfiyCode(UserEntity user) {
-    // TODO: implement verfiyCode
+  Future<Either<Failure, Map<String, dynamic>>> verfiyCode(
+      UserEntity user) async {
+    if (await appNetworkChecker.isConnected) {
+      try {
+        final userModel =
+            UserModel(email: user.email, verfiyCode: user.verfiyCode);
+        final response = await authRemoteDataSourceImpl.verfiyCode(userModel);
+        if (response["status"] == "success") {
+          return right(response);
+        } else {
+          return left(Failure(message: response["message"]));
+        }
+      } catch (e) {
+        if (e is DioException) {
+          return left(ServerFaliure.fromDioError(e));
+        } else {
+          return left(ServerFaliure(message: "$e"));
+        }
+      }
+    } else {
+      return left(
+        OfflineFailure(message: "Your Device is not connecting to Internet"),
+      );
+    }
+  }
+
+  @override
+  Future<Either<Failure, Map<String, dynamic>>> login(UserEntity user) {
+    // TODO: implement login
     throw UnimplementedError();
   }
 }

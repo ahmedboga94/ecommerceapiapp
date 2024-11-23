@@ -4,6 +4,7 @@ class CustomTextForm extends StatelessWidget {
   final String hint;
   final String? initialValue;
   final bool secureText;
+  final bool? enable;
   final Widget icon;
   final TextInputType? keyboardType;
   final TextEditingController? controller;
@@ -16,6 +17,7 @@ class CustomTextForm extends StatelessWidget {
       required this.icon,
       this.initialValue,
       this.secureText = false,
+      this.enable = true,
       this.controller,
       this.onChanged,
       this.validator,
@@ -24,6 +26,7 @@ class CustomTextForm extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return TextFormField(
+      enabled: enable,
       initialValue: initialValue,
       controller: controller,
       onChanged: onChanged,

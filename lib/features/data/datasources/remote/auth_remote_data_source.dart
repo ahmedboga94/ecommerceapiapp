@@ -7,7 +7,7 @@ import '../../models/user_model.dart';
 abstract class AuthRemoteDataSource {
   Future<Unit> login(UserModel user);
   Future<Map<String, dynamic>> signUp(UserModel user);
-  Future<Unit> verfiyCode(UserModel user);
+  Future<Map<String, dynamic>> verfiyCode(UserModel user);
 }
 
 class AuthRemoteDataSourceImpl implements AuthRemoteDataSource {
@@ -30,8 +30,11 @@ class AuthRemoteDataSourceImpl implements AuthRemoteDataSource {
   }
 
   @override
-  Future<Unit> verfiyCode(UserModel user) {
-    // TODO: implement verfiyCode
-    throw UnimplementedError();
+  Future<Map<String, dynamic>> verfiyCode(UserModel user) async {
+    var response = await apiService.post(
+      endPoint: AppServerLinks.verfiyCodeUrl,
+      body: user.toJson(),
+    );
+    return response;
   }
 }

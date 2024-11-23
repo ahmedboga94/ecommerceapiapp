@@ -8,7 +8,7 @@ import '../../../domain/usecases/auth/sign_up_use_case.dart';
 
 class SignUpProvider extends ChangeNotifier {
   final SignUpUseCase signUpUseCase;
-  final GlobalKey<FormState> _formKey = GlobalKey();
+  final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
   final RegExp _regexMail = RegExp(AppStrings.mailValidate);
   final RegExp _regexPassword = RegExp(AppStrings.passwordValidate);
   bool _isloading = false;
@@ -29,14 +29,14 @@ class SignUpProvider extends ChangeNotifier {
   bool get isConfirmPassVisible => _isConfirmPassVisible;
   String? get errorMessage => _errorMessage;
 
-  void setLoading(bool val) {
+  void _setLoading(bool val) {
     _isloading = val;
     notifyListeners();
   }
 
   signUpWithEmailandPassword(BuildContext context) async {
     if (_formKey.currentState!.validate()) {
-      setLoading(true);
+      _setLoading(true);
 
       UserEntity user = UserEntity(
           userName: userName,
@@ -47,18 +47,18 @@ class SignUpProvider extends ChangeNotifier {
       final result = await signUpUseCase.call(user);
       result.fold(
         (failure) {
-          debugPrint("============ ${failure.message}");
+          debugPrint("============ ${failure.message} ============");
           _errorMessage = failure.message;
           notifyListeners();
         },
         (response) {
-          debugPrint("============ ${response["status"]}");
+          debugPrint("============ ${response["status"]} ============");
           context.push(AppRoutes.verfiyCodeView, extra: email);
           notifyListeners();
         },
       );
 
-      setLoading(false);
+      _setLoading(false);
     }
   }
 

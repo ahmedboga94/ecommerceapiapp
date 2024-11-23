@@ -5,7 +5,7 @@ class UserEntity {
   String? email;
   String? phoneNumber;
   String? password;
-  String? verfiycode;
+  String? verfiyCode;
   String? approve;
   String? createdAt;
 
@@ -15,7 +15,7 @@ class UserEntity {
     this.email,
     this.phoneNumber,
     this.password,
-    this.verfiycode,
+    this.verfiyCode,
     this.approve,
     this.createdAt,
   });

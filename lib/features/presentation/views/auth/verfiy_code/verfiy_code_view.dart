@@ -13,7 +13,7 @@ class VerfiyCodeView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ChangeNotifierProvider<ChangeNotifier>(
+    return ChangeNotifierProvider(
       create: (context) => di<VerfiyCodeProvider>(),
       child: Scaffold(
         appBar: AppBar(

@@ -36,6 +36,7 @@ class SignUpViewBody extends StatelessWidget {
                   CustomTextForm(
                     hint: "Enter Your Name",
                     icon: const Icon(Icons.person_outlined),
+                    enable: !signUpProvider.isLoading,
                     validator: (value) => signUpProvider.nameValidator(value!,
                         hintUserName: "Enter Name",
                         nameLength6Hint: "Name can't be less than 6 words"),
@@ -46,6 +47,7 @@ class SignUpViewBody extends StatelessWidget {
                     hint: "Enter Your E-Mail",
                     icon: const Icon(Icons.email_outlined),
                     keyboardType: TextInputType.emailAddress,
+                    enable: !signUpProvider.isLoading,
                     validator: (value) => signUpProvider.emailValidator(value!,
                         hintEmail: "Enter Email",
                         hintVaildEmail: "Enter Vaild Mail"),
@@ -56,6 +58,7 @@ class SignUpViewBody extends StatelessWidget {
                     hint: "Enter Your Phone Number",
                     icon: const Icon(Icons.phone_android_outlined),
                     keyboardType: TextInputType.phone,
+                    enable: !signUpProvider.isLoading,
                     validator: (value) => signUpProvider.phoneNumberValidator(
                         value!,
                         hintPhoneNumber: "Enter Phone Number",
@@ -72,6 +75,7 @@ class SignUpViewBody extends StatelessWidget {
                             ? Icons.visibility
                             : Icons.visibility_off)),
                     secureText: signUpProvider.isPassVisible,
+                    enable: !signUpProvider.isLoading,
                     validator: (value) => signUpProvider.passwordValidator(
                         value!,
                         hintPass: "Enter Your Password",
@@ -89,6 +93,7 @@ class SignUpViewBody extends StatelessWidget {
                             ? Icons.visibility
                             : Icons.visibility_off)),
                     secureText: signUpProvider.isConfirmPassVisible,
+                    enable: !signUpProvider.isLoading,
                     validator: (value) =>
                         signUpProvider.passwordConfirmValidator(value!,
                             hintPass: "Re-enter your Password",

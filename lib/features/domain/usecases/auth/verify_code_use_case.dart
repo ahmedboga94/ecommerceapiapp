@@ -9,7 +9,7 @@ class VerifyCodeUseCase {
 
   VerifyCodeUseCase(this.authRepo);
 
-  Future<Either<Failure, String>> call(UserEntity user) {
+  Future<Either<Failure, Map<String, dynamic>>> call(UserEntity user) {
     return authRepo.verfiyCode(user);
   }
 }
