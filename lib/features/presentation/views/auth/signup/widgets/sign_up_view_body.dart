@@ -1,3 +1,4 @@
+import 'package:ecommerceapiapp/core/functions/string_capitalize_casing.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:provider/provider.dart';
@@ -40,7 +41,8 @@ class SignUpViewBody extends StatelessWidget {
                     validator: (value) => signUpProvider.nameValidator(value!,
                         hintUserName: "Enter Name",
                         nameLength6Hint: "Name can't be less than 6 words"),
-                    onChanged: (val) => signUpProvider.userName = val,
+                    onChanged: (val) =>
+                        signUpProvider.userName = val.toTitleCase,
                   ),
                   const SizedBox(height: 25),
                   CustomTextForm(
@@ -51,7 +53,8 @@ class SignUpViewBody extends StatelessWidget {
                     validator: (value) => signUpProvider.emailValidator(value!,
                         hintEmail: "Enter Email",
                         hintVaildEmail: "Enter Vaild Mail"),
-                    onChanged: (val) => signUpProvider.email = val,
+                    onChanged: (val) =>
+                        signUpProvider.email = val.toLowerCase(),
                   ),
                   const SizedBox(height: 25),
                   CustomTextForm(

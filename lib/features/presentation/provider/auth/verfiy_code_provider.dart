@@ -38,7 +38,6 @@ class VerfiyCodeProvider extends ChangeNotifier {
         debugPrint("============ ${response["status"]} ============");
         showSnackBar(context, msg: msg, icon: Icons.check_circle_outline);
         context.go(AppRoutes.loginView);
-
         notifyListeners();
       },
     );

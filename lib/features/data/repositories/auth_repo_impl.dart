@@ -74,8 +74,27 @@ class AuthRepoImpl implements AuthRepo {
   }
 
   @override
-  Future<Either<Failure, Map<String, dynamic>>> login(UserEntity user) {
-    // TODO: implement login
-    throw UnimplementedError();
+  Future<Either<Failure, Map<String, dynamic>>> login(UserEntity user) async {
+    if (await appNetworkChecker.isConnected) {
+      try {
+        final userModel = UserModel(email: user.email, password: user.password);
+        final response = await authRemoteDataSourceImpl.login(userModel);
+        if (response["status"] == "success") {
+          return right(response);
+        } else {
+          return left(Failure(message: response["message"]));
+        }
+      } catch (e) {
+        if (e is DioException) {
+          return left(ServerFaliure.fromDioError(e));
+        } else {
+          return left(ServerFaliure(message: "$e"));
+        }
+      }
+    } else {
+      return left(
+        OfflineFailure(message: "Your Device is not connecting to Internet"),
+      );
+    }
   }
 }

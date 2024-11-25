@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/scheduler.dart';
 import 'package:go_router/go_router.dart';
 import 'package:provider/provider.dart';
+import '../../../../../../core/functions/show_snack_bar.dart';
 import '../../../../../../core/utils/app_routes.dart';
 import '../../../../provider/auth/login_provider.dart';
 import '../../../../widgets/custom_text_form.dart';
@@ -15,6 +17,12 @@ class LoginViewBody extends StatelessWidget {
   Widget build(BuildContext context) {
     return Consumer<LoginProvider>(
       builder: (context, loginProvider, child) {
+        if (loginProvider.errorMessage != null) {
+          SchedulerBinding.instance.addPostFrameCallback((_) {
+            showSnackBar(context, msg: loginProvider.errorMessage!);
+            loginProvider.clearError();
+          });
+        }
         return Padding(
           padding: const EdgeInsets.symmetric(horizontal: 30, vertical: 20),
           child: SingleChildScrollView(
@@ -35,7 +43,7 @@ class LoginViewBody extends StatelessWidget {
                     validator: (value) => loginProvider.emailValidator(value!,
                         hintEmail: "Enter Your Mail First",
                         hintVaildEmail: "Enter Vaild Email"),
-                    onChanged: (val) => loginProvider.email = val,
+                    onChanged: (val) => loginProvider.email = val.toLowerCase(),
                   ),
                   const SizedBox(height: 25),
                   CustomTextForm(
@@ -65,7 +73,10 @@ class LoginViewBody extends StatelessWidget {
                     child: ElevatedButton(
                         onPressed: loginProvider.isLoading
                             ? null
-                            : () => loginProvider.loginWithEmailandPassword(),
+                            : () => loginProvider.loginWithEmailandPassword(
+                                  context,
+                                  msg: "Login Successfully",
+                                ),
                         child: loginProvider.isLoading
                             ? const AuthLoadingIndicator()
                             : const Text("Login")),

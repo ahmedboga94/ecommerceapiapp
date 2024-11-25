@@ -4,6 +4,7 @@ import '../../features/presentation/views/auth/login/login_view.dart';
 import '../../features/presentation/views/auth/reset_password/reset_password_view.dart';
 import '../../features/presentation/views/auth/signup/sign_up_view.dart';
 import '../../features/presentation/views/auth/verfiy_code/verfiy_code_view.dart';
+import '../../features/presentation/views/main_view/main_view.dart';
 import '../../features/presentation/views/onboarding/on_bording_view.dart';
 import '../../features/presentation/views/quick_settings/quick_settings_view.dart';
 
@@ -60,10 +61,10 @@ class AppRoutes {
           return VerfiyCodeView(email: email);
         },
       ),
-      // GoRoute(
-      //   path: mainView,
-      //   builder: (context, state) => const MainView(),
-      // ),
+      GoRoute(
+        path: mainView,
+        builder: (context, state) => const MainView(),
+      ),
       // GoRoute(
       //   path: noteDetailsView,
       //   builder: (context, state) {

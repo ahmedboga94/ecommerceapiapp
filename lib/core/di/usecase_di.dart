@@ -1,3 +1,4 @@
+import '../../features/domain/usecases/auth/login_use_case.dart';
 import '../../features/domain/usecases/auth/sign_up_use_case.dart';
 import '../../features/domain/usecases/auth/verify_code_use_case.dart';
 import '../../features/domain/usecases/settings/set_language_use_case.dart';
@@ -12,4 +13,5 @@ useCaseDi() async {
   // Auth
   di.registerLazySingleton(() => SignUpUseCase(di()));
   di.registerLazySingleton(() => VerifyCodeUseCase(di()));
+  di.registerLazySingleton(() => LoginUseCase(di()));
 }
