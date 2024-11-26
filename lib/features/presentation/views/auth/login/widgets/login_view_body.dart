@@ -39,6 +39,7 @@ class LoginViewBody extends StatelessWidget {
                   CustomTextForm(
                     hint: "Enter Your E-Mail",
                     icon: const Icon(Icons.email_outlined),
+                    enable: !loginProvider.isLoading,
                     keyboardType: TextInputType.emailAddress,
                     validator: (value) => loginProvider.emailValidator(value!,
                         hintEmail: "Enter Your Mail First",
@@ -53,6 +54,7 @@ class LoginViewBody extends StatelessWidget {
                         icon: Icon(loginProvider.isPassVisible
                             ? Icons.visibility
                             : Icons.visibility_off)),
+                    enable: !loginProvider.isLoading,
                     secureText: loginProvider.isPassVisible,
                     validator: (value) => loginProvider.passwordValidator(
                         value!,

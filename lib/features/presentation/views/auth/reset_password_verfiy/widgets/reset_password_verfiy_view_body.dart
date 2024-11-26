@@ -1,17 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_otp_text_field/flutter_otp_text_field.dart';
 import 'package:provider/provider.dart';
-import '../../../../provider/auth/verfiy_code_provider.dart';
+
+import '../../../../provider/auth/reset_password_verfiy_provider.dart';
 import '../../widgets/auth_headline.dart';
 
-class VerfiyCodeViewBody extends StatelessWidget {
+class ResetPasswordVerfiyViewBody extends StatelessWidget {
   final String email;
-  const VerfiyCodeViewBody({super.key, required this.email});
+  const ResetPasswordVerfiyViewBody({super.key, required this.email});
 
   @override
   Widget build(BuildContext context) {
-    return Consumer<VerfiyCodeProvider>(
-      builder: (context, verfiycodeProvider, child) {
+    return Consumer<ResetPasswordVerfiyProvider>(
+      builder: (context, resetPasswordVerfiyProvider, child) {
         return Padding(
           padding: const EdgeInsets.symmetric(horizontal: 30, vertical: 20),
           child: SingleChildScrollView(
@@ -26,20 +27,16 @@ class VerfiyCodeViewBody extends StatelessWidget {
                   fieldWidth: 50,
                   borderRadius: BorderRadius.circular(18),
                   showFieldAsBox: true,
-                  enabled: !verfiycodeProvider.isLoading,
+                  enabled: !resetPasswordVerfiyProvider.isLoading,
                   onSubmit: (String verificationCode) {
-                    verfiycodeProvider.verfiyCodeWithEmail(
-                      context,
-                      email: email,
-                      verfiyCode: verificationCode,
-                      msg: "Account was created successfully",
-                    );
+                    resetPasswordVerfiyProvider.resetPassWithCode(context,
+                        email: email, verfiyCode: verificationCode);
                   }, // end onSubmit
                 ),
                 const SizedBox(height: 30),
                 SizedBox(
                   height: 50,
-                  child: verfiycodeProvider.isLoading
+                  child: resetPasswordVerfiyProvider.isLoading
                       ? const Center(child: CircularProgressIndicator())
                       : const SizedBox(),
                 ),

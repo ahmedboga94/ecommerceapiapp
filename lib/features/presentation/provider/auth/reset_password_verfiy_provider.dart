@@ -1,16 +1,16 @@
+import 'package:ecommerceapiapp/core/utils/app_routes.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
 import '../../../../core/functions/show_snack_bar.dart';
-import '../../../../core/utils/app_routes.dart';
 import '../../../domain/entities/user_entity.dart';
-import '../../../domain/usecases/auth/verify_code_use_case.dart';
+import '../../../domain/usecases/auth/reset_password_verfiy_use_case.dart';
 
-class VerfiyCodeProvider extends ChangeNotifier {
-  final VerifyCodeUseCase verifyCodeUseCase;
+class ResetPasswordVerfiyProvider extends ChangeNotifier {
+  final ResetPasswordVerfiyUseCase resetPasswordVerfiyUseCase;
   bool _isloading = false;
 
-  VerfiyCodeProvider(this.verifyCodeUseCase);
+  ResetPasswordVerfiyProvider(this.resetPasswordVerfiyUseCase);
 
   bool get isLoading => _isloading;
 
@@ -19,13 +19,11 @@ class VerfiyCodeProvider extends ChangeNotifier {
     notifyListeners();
   }
 
-  verfiyCodeWithEmail(BuildContext context,
-      {required String email,
-      required String verfiyCode,
-      required String msg}) async {
+  resetPassWithCode(BuildContext context,
+      {required String email, required String verfiyCode}) async {
     _setLoading(true);
     final user = UserEntity(email: email, verfiyCode: verfiyCode);
-    final result = await verifyCodeUseCase.call(user);
+    final result = await resetPasswordVerfiyUseCase.call(user);
     result.fold(
       (failure) {
         debugPrint("============ ${failure.message} ============");
@@ -34,8 +32,7 @@ class VerfiyCodeProvider extends ChangeNotifier {
       },
       (response) {
         debugPrint("============ ${response["status"]} ============");
-        showSnackBar(context, msg: msg, icon: Icons.check_circle_outline);
-        context.go(AppRoutes.loginView);
+        context.push(AppRoutes.resetPasswordSccuessView, extra: email);
         notifyListeners();
       },
     );

@@ -2,6 +2,7 @@ import 'package:go_router/go_router.dart';
 import '../../features/presentation/views/auth/forget_password/forget_password_view.dart';
 import '../../features/presentation/views/auth/login/login_view.dart';
 import '../../features/presentation/views/auth/reset_password/reset_password_view.dart';
+import '../../features/presentation/views/auth/reset_password_verfiy/reset_password_verfiy.dart';
 import '../../features/presentation/views/auth/signup/sign_up_view.dart';
 import '../../features/presentation/views/auth/verfiy_code/verfiy_code_view.dart';
 import '../../features/presentation/views/main_view/main_view.dart';
@@ -14,9 +15,10 @@ class AppRoutes {
   static const String onBordingView = "/onBordingView";
   static const String loginView = "/loginView";
   static const String signUpView = "/signUpView";
-  static const String forgetPasswordView = "/forgetPasswordView";
-  static const String resetPasswordView = "/resetPasswordView";
   static const String verfiyCodeView = "/verfiyCodeView";
+  static const String forgetPasswordView = "/forgetPasswordView";
+  static const String resetPasswordVerfiyView = "/resetPasswordVerfiyView";
+  static const String resetPasswordSccuessView = "/resetPasswordSccuessView";
 
   static const String mainView = "/mainView";
   static const String noteDetailsView = "/notesDetailsView";
@@ -47,14 +49,6 @@ class AppRoutes {
         builder: (context, state) => const SignUpView(),
       ),
       GoRoute(
-        path: forgetPasswordView,
-        builder: (context, state) => const ForgetPasswordView(),
-      ),
-      GoRoute(
-        path: resetPasswordView,
-        builder: (context, state) => const ResetPasswordView(),
-      ),
-      GoRoute(
         path: verfiyCodeView,
         builder: (context, state) {
           final email = state.extra as String;
@@ -62,9 +56,28 @@ class AppRoutes {
         },
       ),
       GoRoute(
+        path: forgetPasswordView,
+        builder: (context, state) => const ForgetPasswordView(),
+      ),
+      GoRoute(
+        path: resetPasswordVerfiyView,
+        builder: (context, state) {
+          final email = state.extra as String;
+          return ResetPasswordVerfiyView(email: email);
+        },
+      ),
+      GoRoute(
+        path: resetPasswordSccuessView,
+        builder: (context, state) {
+          final mail = state.extra as String;
+          return ResetPasswordView(mail: mail);
+        },
+      ),
+      GoRoute(
         path: mainView,
         builder: (context, state) => const MainView(),
       ),
+
       // GoRoute(
       //   path: noteDetailsView,
       //   builder: (context, state) {

@@ -5,23 +5,19 @@ import '../../../../core/constants/app_strings.dart';
 import '../../../../core/functions/show_snack_bar.dart';
 import '../../../../core/utils/app_routes.dart';
 import '../../../domain/entities/user_entity.dart';
-import '../../../domain/usecases/auth/sign_up_use_case.dart';
+import '../../../domain/usecases/auth/reset_password_use_case.dart';
 
-class SignUpProvider extends ChangeNotifier {
-  final SignUpUseCase signUpUseCase;
+class ResetPasswordProvider extends ChangeNotifier {
+  final ResetPasswordUseCase resetPasswordUseCase;
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
-  final RegExp _regexMail = RegExp(AppStrings.mailValidate);
   final RegExp _regexPassword = RegExp(AppStrings.passwordValidate);
   bool _isloading = false;
-  String userName = "";
-  String email = "";
-  String phoneNumber = "";
   String password = "";
   String confirmPassword = "";
   bool _isPassVisible = true;
   bool _isConfirmPassVisible = true;
 
-  SignUpProvider(this.signUpUseCase);
+  ResetPasswordProvider(this.resetPasswordUseCase);
 
   GlobalKey<FormState> get formKey => _formKey;
   bool get isLoading => _isloading;
@@ -33,17 +29,14 @@ class SignUpProvider extends ChangeNotifier {
     notifyListeners();
   }
 
-  signUpWithEmailandPassword(BuildContext context) async {
+  changeAndConfirmPass(BuildContext context,
+      {required String mail, required String msg}) async {
     if (_formKey.currentState!.validate()) {
       _setLoading(true);
 
-      UserEntity user = UserEntity(
-          userName: userName,
-          email: email,
-          phoneNumber: phoneNumber,
-          password: password);
+      UserEntity user = UserEntity(email: mail, password: password);
 
-      final result = await signUpUseCase.call(user);
+      final result = await resetPasswordUseCase.call(user);
       result.fold(
         (failure) {
           debugPrint("============ ${failure.message} ============");
@@ -52,55 +45,14 @@ class SignUpProvider extends ChangeNotifier {
         },
         (response) {
           debugPrint("============ ${response["status"]} ============");
-          context.push(AppRoutes.verfiyCodeView, extra: email);
+          context.go(AppRoutes.loginView);
+          showSnackBar(context, msg: msg, icon: Icons.check_circle_outline);
           notifyListeners();
         },
       );
 
       _setLoading(false);
     }
-  }
-
-  String? nameValidator(
-    String value, {
-    required String hintUserName,
-    required String nameLength6Hint,
-  }) {
-    if (value.isEmpty) {
-      return hintUserName;
-    }
-    if (value.length < 6) {
-      return nameLength6Hint;
-    }
-    return null;
-  }
-
-  String? emailValidator(
-    String value, {
-    required String hintEmail,
-    required String hintVaildEmail,
-  }) {
-    if (value.isEmpty) {
-      return hintEmail;
-    }
-    if (!_regexMail.hasMatch(value)) {
-      return hintVaildEmail;
-    }
-    return null;
-  }
-
-  String? phoneNumberValidator(
-    String value, {
-    required String hintPhoneNumber,
-    required String nameLength10Hint,
-  }) {
-    if (value.isEmpty) {
-      return hintPhoneNumber;
-    }
-    if (value.length < 10) {
-      return nameLength10Hint;
-    }
-    return null;
   }
 
   String? passwordValidator(

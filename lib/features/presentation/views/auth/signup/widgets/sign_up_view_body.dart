@@ -1,8 +1,6 @@
 import 'package:ecommerceapiapp/core/functions/string_capitalize_casing.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/scheduler.dart';
 import 'package:provider/provider.dart';
-import '../../../../../../core/functions/show_snack_bar.dart';
 import '../../../../provider/auth/sign_up_provider.dart';
 import '../../../../widgets/custom_text_form.dart';
 import '../../widgets/auth_headline.dart';
@@ -16,12 +14,6 @@ class SignUpViewBody extends StatelessWidget {
   Widget build(BuildContext context) {
     return Consumer<SignUpProvider>(
       builder: (context, signUpProvider, child) {
-        if (signUpProvider.errorMessage != null) {
-          SchedulerBinding.instance.addPostFrameCallback((_) {
-            showSnackBar(context, msg: signUpProvider.errorMessage!);
-            signUpProvider.clearError();
-          });
-        }
         return Padding(
           padding: const EdgeInsets.symmetric(horizontal: 30, vertical: 20),
           child: SingleChildScrollView(

@@ -97,4 +97,86 @@ class AuthRepoImpl implements AuthRepo {
       );
     }
   }
+
+  @override
+  Future<Either<Failure, Map<String, dynamic>>> forgetPassword(
+      UserEntity user) async {
+    if (await appNetworkChecker.isConnected) {
+      try {
+        final userModel = UserModel(email: user.email);
+        final response =
+            await authRemoteDataSourceImpl.forgetPassword(userModel);
+        if (response["status"] == "success") {
+          return right(response);
+        } else {
+          return left(Failure(message: response["message"]));
+        }
+      } catch (e) {
+        if (e is DioException) {
+          return left(ServerFaliure.fromDioError(e));
+        } else {
+          return left(ServerFaliure(message: "$e"));
+        }
+      }
+    } else {
+      return left(
+        OfflineFailure(message: "Your Device is not connecting to Internet"),
+      );
+    }
+  }
+
+  @override
+  Future<Either<Failure, Map<String, dynamic>>> resetPasswordVerfiy(
+      UserEntity user) async {
+    if (await appNetworkChecker.isConnected) {
+      try {
+        final userModel =
+            UserModel(email: user.email, verfiyCode: user.verfiyCode);
+        final response =
+            await authRemoteDataSourceImpl.resetPassVerfiy(userModel);
+        if (response["status"] == "success") {
+          return right(response);
+        } else {
+          return left(Failure(message: response["message"]));
+        }
+      } catch (e) {
+        if (e is DioException) {
+          return left(ServerFaliure.fromDioError(e));
+        } else {
+          return left(ServerFaliure(message: "$e"));
+        }
+      }
+    } else {
+      return left(
+        OfflineFailure(message: "Your Device is not connecting to Internet"),
+      );
+    }
+  }
+
+  @override
+  Future<Either<Failure, Map<String, dynamic>>> resetPasswordSuccess(
+      UserEntity user) async {
+    if (await appNetworkChecker.isConnected) {
+      try {
+        final userModel = UserModel(email: user.email, password: user.password);
+        final response =
+            await authRemoteDataSourceImpl.resetPassSuccess(userModel);
+        if (response["status"] == "success") {
+          return right(response);
+        } else {
+          return left(Failure(message: response["message"]));
+        }
+      } catch (e) {
+        if (e is DioException) {
+          return left(ServerFaliure.fromDioError(e));
+        } else {
+          return left(ServerFaliure(message: "$e"));
+        }
+      }
+    } else {
+      return left(
+        OfflineFailure(message: "Your Device is not connecting to Internet"),
+      );
+    }
+  }
 }
