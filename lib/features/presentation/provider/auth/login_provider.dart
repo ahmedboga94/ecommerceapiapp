@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 import '../../../../core/constants/app_strings.dart';
+import '../../../../core/di/init_di.dart';
 import '../../../../core/functions/show_snack_bar.dart';
 import '../../../../core/utils/app_routes.dart';
 import '../../../domain/entities/user_entity.dart';
@@ -39,13 +41,12 @@ class LoginProvider extends ChangeNotifier {
         (failure) {
           debugPrint("============ ${failure.message} ============");
           _errorMessage = failure.message;
-          // notifyListeners();
         },
         (response) {
           debugPrint("============ ${response["status"]} ============");
           showSnackBar(context, msg: msg, icon: Icons.check_circle_outline);
-          context.push(AppRoutes.mainView, extra: email);
-          // notifyListeners();
+          context.go(AppRoutes.mainView, extra: email);
+          di<SharedPreferences>().setBool("mainView", true);
         },
       );
 

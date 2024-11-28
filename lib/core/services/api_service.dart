@@ -15,7 +15,6 @@ class ApiService {
       {required String endPoint, Map<String, dynamic>? body}) async {
     Response response =
         await _dio.post(endPoint, data: FormData.fromMap(body!));
-
     return json.decode(response.data);
   }
 }

@@ -1,5 +1,5 @@
 import 'package:dio/dio.dart';
-import 'package:internet_connection_checker/internet_connection_checker.dart';
+import 'package:internet_connection_checker_plus/internet_connection_checker_plus.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import '../services/api_service.dart';
@@ -15,5 +15,5 @@ externalDi() async {
 
   di.registerLazySingleton(() => sharedPref);
   di.registerLazySingleton(() => Dio());
-  di.registerLazySingleton(() => InternetConnectionChecker());
+  di.registerLazySingleton(() => InternetConnection());
 }

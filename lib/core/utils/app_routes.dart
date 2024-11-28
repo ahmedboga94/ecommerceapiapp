@@ -1,4 +1,5 @@
 import 'package:go_router/go_router.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import '../../features/presentation/views/auth/forget_password/forget_password_view.dart';
 import '../../features/presentation/views/auth/login/login_view.dart';
 import '../../features/presentation/views/auth/reset_password/reset_password_view.dart';
@@ -8,6 +9,7 @@ import '../../features/presentation/views/auth/verfiy_code/verfiy_code_view.dart
 import '../../features/presentation/views/main_view/main_view.dart';
 import '../../features/presentation/views/onboarding/on_bording_view.dart';
 import '../../features/presentation/views/quick_settings/quick_settings_view.dart';
+import '../di/init_di.dart';
 
 class AppRoutes {
   // static const String splashView = "/";
@@ -25,16 +27,15 @@ class AppRoutes {
   static const String noteEditView = "/noteEditView";
   static const String settingsView = "/settingsView";
 
-  // static final setFinalPage = di<SharedPreferences>().getBool("finalPage");
+  static final setStartUpPage = di<SharedPreferences>().getBool("mainView");
 
   static final GoRouter router = GoRouter(
     routes: [
       GoRoute(
         path: quickSettingsView,
-        builder: (context, state) =>
-            // setFinalPage != null
-            //     ? const LoginView():
-            const QuickSettingsView(),
+        builder: (context, state) => setStartUpPage == true
+            ? const MainView()
+            : const QuickSettingsView(),
       ),
       GoRoute(
         path: onBordingView,

@@ -21,10 +21,9 @@ class ResetPasswordViewBody extends StatelessWidget {
               key: resetPasswordProvider.formKey,
               child: Column(
                 children: [
-                  AuthHeadline(
+                  const AuthHeadline(
                       headline: "Enter New Password",
-                      subHeadline:
-                          "That's last step to recover your account\n $mail"),
+                      subHeadline: "That's last step to recover your account"),
                   const SizedBox(height: 35),
                   CustomTextForm(
                     hint: "Enter Your Password",
@@ -65,12 +64,13 @@ class ResetPasswordViewBody extends StatelessWidget {
                   SizedBox(
                     width: double.infinity,
                     child: ElevatedButton(
-                      onPressed: () =>
-                          resetPasswordProvider.changeAndConfirmPass(
-                        context,
-                        mail: mail,
-                        msg: "Password recoverd Successfully",
-                      ),
+                      onPressed: resetPasswordProvider.isLoading
+                          ? null
+                          : () => resetPasswordProvider.changeAndConfirmPass(
+                                context,
+                                mail: mail,
+                                msg: "Password recoverd Successfully",
+                              ),
                       child: resetPasswordProvider.isLoading
                           ? const AuthLoadingIndicator()
                           : const Text("Confirm"),
