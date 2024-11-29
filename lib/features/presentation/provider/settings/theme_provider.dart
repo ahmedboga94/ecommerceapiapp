@@ -10,16 +10,18 @@ class ThemeProvider extends ChangeNotifier {
   final SetThemeUseCase setThemeUseCase;
   ThemeEnum _selectedTheme = ThemeEnum.systemTheme;
   String? _errorMessage;
+  String? _themeKey;
 
   ThemeProvider(this.setThemeUseCase);
 
   ThemeEnum get selectedTheme => _selectedTheme;
   String? get errorMessage => _errorMessage;
+  String? get themeKey => _themeKey;
 
   loadTheme() {
-    String? themeKey = di<SharedPreferences>().getString(AppStrings.initTheme);
+    _themeKey = di<SharedPreferences>().getString(AppStrings.initTheme);
 
-    switch (themeKey) {
+    switch (_themeKey) {
       case AppStrings.lightTheme:
         _selectedTheme = ThemeEnum.lightTheme;
       case AppStrings.darkTheme:

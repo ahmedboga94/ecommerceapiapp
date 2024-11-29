@@ -14,24 +14,24 @@ class UserModel extends UserEntity {
 
   factory UserModel.fromJson(Map<String, dynamic> json) {
     return UserModel(
-      id: json["id"] as String,
-      userName: json["name"] as String,
-      email: json["email"] as String,
-      phoneNumber: json["phone"] as String,
-      password: json["password"] as String,
-      verfiyCode: json["verfiyCode"] as String,
-      approve: json["approve"] as String,
-      createdAt: json["createdAt"] as String,
+      id: json["user_id"] as String,
+      userName: json["user_name"] as String,
+      email: json["user_email"] as String,
+      phoneNumber: json["user_phone"] as String,
+      password: json["user_password"] as String,
+      verfiyCode: json["user_verfiycode"] as String,
+      approve: json["user_approve"] as String,
+      createdAt: json["user_created"] as String,
     );
   }
 
   Map<String, dynamic> toJson() {
     return {
-      "name": userName,
-      "email": email,
-      "phone": phoneNumber,
-      "password": password,
-      "verfiyCode": verfiyCode,
+      "user_name": userName,
+      "user_email": email,
+      "user_phone": phoneNumber,
+      "user_password": password,
+      "user_verfiycode": verfiyCode,
     };
   }
 }

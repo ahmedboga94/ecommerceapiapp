@@ -5,14 +5,17 @@ import '../../../core/services/app_network_checker.dart';
 import '../../../core/utils/failure.dart';
 import '../../domain/entities/user_entity.dart';
 import '../../domain/repositories/auth_repo.dart';
+import '../datasources/local/user_data_local_storage.dart';
 import '../datasources/remote/auth_remote_data_source.dart';
 import '../models/user_model.dart';
 
 class AuthRepoImpl implements AuthRepo {
   final AuthRemoteDataSourceImpl authRemoteDataSourceImpl;
+  final UserDataLocalStorage userDataLocalStorage;
   final AppNetworkChecker appNetworkChecker;
   AuthRepoImpl({
     required this.authRemoteDataSourceImpl,
+    required this.userDataLocalStorage,
     required this.appNetworkChecker,
   });
 
@@ -80,6 +83,7 @@ class AuthRepoImpl implements AuthRepo {
         final userModel = UserModel(email: user.email, password: user.password);
         final response = await authRemoteDataSourceImpl.login(userModel);
         if (response["status"] == "success") {
+          userDataLocalStorage.saveUserData(response["data"]);
           return right(response);
         } else {
           return left(Failure(message: response["message"]));

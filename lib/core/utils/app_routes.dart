@@ -6,13 +6,13 @@ import '../../features/presentation/views/auth/reset_password/reset_password_vie
 import '../../features/presentation/views/auth/reset_password_verfiy/reset_password_verfiy.dart';
 import '../../features/presentation/views/auth/signup/sign_up_view.dart';
 import '../../features/presentation/views/auth/verfiy_code/verfiy_code_view.dart';
+import '../../features/presentation/views/edit_profile/edit_profile_view.dart';
 import '../../features/presentation/views/main_view/main_view.dart';
 import '../../features/presentation/views/onboarding/on_bording_view.dart';
 import '../../features/presentation/views/quick_settings/quick_settings_view.dart';
 import '../di/init_di.dart';
 
 class AppRoutes {
-  // static const String splashView = "/";
   static const String quickSettingsView = "/";
   static const String onBordingView = "/onBordingView";
   static const String loginView = "/loginView";
@@ -21,11 +21,8 @@ class AppRoutes {
   static const String forgetPasswordView = "/forgetPasswordView";
   static const String resetPasswordVerfiyView = "/resetPasswordVerfiyView";
   static const String resetPasswordSccuessView = "/resetPasswordSccuessView";
-
   static const String mainView = "/mainView";
-  static const String noteDetailsView = "/notesDetailsView";
-  static const String noteEditView = "/noteEditView";
-  static const String settingsView = "/settingsView";
+  static const String editProfile = "/editProfile";
 
   static final setStartUpPage = di<SharedPreferences>().getBool("mainView");
 
@@ -33,9 +30,8 @@ class AppRoutes {
     routes: [
       GoRoute(
         path: quickSettingsView,
-        builder: (context, state) => setStartUpPage == true
-            ? const MainView()
-            : const QuickSettingsView(),
+        builder: (context, state) =>
+            setStartUpPage! ? const MainView() : const QuickSettingsView(),
       ),
       GoRoute(
         path: onBordingView,
@@ -77,6 +73,10 @@ class AppRoutes {
       GoRoute(
         path: mainView,
         builder: (context, state) => const MainView(),
+      ),
+      GoRoute(
+        path: editProfile,
+        builder: (context, state) => const EditProfileView(),
       ),
 
       // GoRoute(

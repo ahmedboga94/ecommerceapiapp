@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -40,12 +42,18 @@ class LoginProvider extends ChangeNotifier {
       result.fold(
         (failure) {
           debugPrint("============ ${failure.message} ============");
-          _errorMessage = failure.message;
+          showSnackBar(context, msg: failure.message);
         },
         (response) {
           debugPrint("============ ${response["status"]} ============");
+          debugPrint("============ ${response["data"]} ============");
+
+          di<SharedPreferences>().setString(
+            AppStrings.userData,
+            response["data"] != null ? jsonEncode(response["data"]) : "",
+          );
           showSnackBar(context, msg: msg, icon: Icons.check_circle_outline);
-          context.go(AppRoutes.mainView, extra: email);
+          context.go(AppRoutes.mainView);
           di<SharedPreferences>().setBool("mainView", true);
         },
       );
@@ -77,11 +85,6 @@ class LoginProvider extends ChangeNotifier {
 
   void visiblePassword() {
     _isPassVisible = !_isPassVisible;
-    notifyListeners();
-  }
-
-  void clearError() {
-    _errorMessage = null;
     notifyListeners();
   }
 }

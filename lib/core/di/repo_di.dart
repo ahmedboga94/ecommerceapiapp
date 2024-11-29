@@ -9,6 +9,7 @@ repoDi() {
 
   di.registerLazySingleton<AuthRepo>(() => AuthRepoImpl(
         authRemoteDataSourceImpl: di(),
+        userDataLocalStorage: di(),
         appNetworkChecker: di(),
       ));
 }

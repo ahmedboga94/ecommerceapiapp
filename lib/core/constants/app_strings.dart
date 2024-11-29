@@ -11,4 +11,6 @@ class AppStrings {
   static String mailValidate =
       r"^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+";
   static String passwordValidate = r"^(?=.*?[a-z])(?=.*?[0-9]).{8,}$";
+
+  static const String userData = "userData";
 }

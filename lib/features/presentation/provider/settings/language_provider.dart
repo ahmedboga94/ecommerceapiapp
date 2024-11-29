@@ -10,16 +10,18 @@ class LanguageProvider extends ChangeNotifier {
   final SetLanguageUseCase setLanguageUseCase;
   LangEnum _selectedLanguage = LangEnum.systemLang;
   String? _errorMessage;
+  String? _langKey;
 
   LanguageProvider(this.setLanguageUseCase);
 
   LangEnum get selectedLanguage => _selectedLanguage;
   String? get errorMessage => _errorMessage;
+  String? get langKey => _langKey;
 
   void loadLanguage() {
-    String? langKey = di<SharedPreferences>().getString(AppStrings.setLanguage);
+    _langKey = di<SharedPreferences>().getString(AppStrings.setLanguage);
 
-    switch (langKey) {
+    switch (_langKey) {
       case AppStrings.setEnglish:
         _selectedLanguage = LangEnum.englishLang;
       case AppStrings.setArabic:
