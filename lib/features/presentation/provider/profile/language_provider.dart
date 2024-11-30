@@ -12,7 +12,9 @@ class LanguageProvider extends ChangeNotifier {
   String? _errorMessage;
   String? _langKey;
 
-  LanguageProvider(this.setLanguageUseCase);
+  LanguageProvider(this.setLanguageUseCase) {
+    loadLanguage();
+  }
 
   LangEnum get selectedLanguage => _selectedLanguage;
   String? get errorMessage => _errorMessage;

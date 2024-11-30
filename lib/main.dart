@@ -23,9 +23,8 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MultiProvider(
       providers: [
-        ChangeNotifierProvider(create: (_) => di<ThemeProvider>()..loadTheme()),
-        ChangeNotifierProvider(
-            create: (_) => di<LanguageProvider>()..loadLanguage()),
+        ChangeNotifierProvider(create: (_) => di<ThemeProvider>()),
+        ChangeNotifierProvider(create: (_) => di<LanguageProvider>()),
       ],
       child: Consumer2<ThemeProvider, LanguageProvider>(
         builder: (context, theme, lang, child) {

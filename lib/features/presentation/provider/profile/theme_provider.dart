@@ -12,7 +12,9 @@ class ThemeProvider extends ChangeNotifier {
   String? _errorMessage;
   String? _themeKey;
 
-  ThemeProvider(this.setThemeUseCase);
+  ThemeProvider(this.setThemeUseCase) {
+    loadTheme();
+  }
 
   ThemeEnum get selectedTheme => _selectedTheme;
   String? get errorMessage => _errorMessage;
