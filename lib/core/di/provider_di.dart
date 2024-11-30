@@ -5,8 +5,8 @@ import '../../features/presentation/provider/auth/reset_password_verfiy_provider
 import '../../features/presentation/provider/auth/sign_up_provider.dart';
 import '../../features/presentation/provider/auth/verfiy_code_provider.dart';
 import '../../features/presentation/provider/profile/profile_provider.dart';
-import '../../features/presentation/provider/settings/language_provider.dart';
-import '../../features/presentation/provider/settings/theme_provider.dart';
+import '../../features/presentation/provider/profile/language_provider.dart';
+import '../../features/presentation/provider/profile/theme_provider.dart';
 import 'init_di.dart';
 
 providerDi() {
@@ -22,5 +22,8 @@ providerDi() {
   di.registerFactory(() => ResetPasswordVerfiyProvider(di()));
   di.registerFactory(() => ResetPasswordProvider(di()));
 
-  di.registerFactory(() => ProfileProvider(di()));
+  di.registerFactory(() => ProfileProvider(
+        getUserDataUseCase: di(),
+        clearUserDataUseCase: di(),
+      ));
 }

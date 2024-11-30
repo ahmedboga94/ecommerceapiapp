@@ -4,7 +4,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 import '../../../../core/constants/app_strings.dart';
 import '../../../../core/di/init_di.dart';
 import '../../../../core/enums/language_enum.dart';
-import '../../../domain/usecases/settings/set_language_use_case.dart';
+import '../../../domain/usecases/profile/set_language_use_case.dart';
 
 class LanguageProvider extends ChangeNotifier {
   final SetLanguageUseCase setLanguageUseCase;

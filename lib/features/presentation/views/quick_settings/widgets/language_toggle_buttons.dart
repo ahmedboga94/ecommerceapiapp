@@ -4,7 +4,7 @@ import 'package:provider/provider.dart';
 
 import '../../../../../core/constants/app_colors.dart';
 import '../../../../../core/enums/language_enum.dart';
-import '../../../provider/settings/language_provider.dart';
+import '../../../provider/profile/language_provider.dart';
 
 class LanguageToggleButtons extends StatelessWidget {
   const LanguageToggleButtons({super.key});

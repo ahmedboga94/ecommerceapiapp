@@ -4,7 +4,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 import '../../../../core/constants/app_strings.dart';
 import '../../../../core/di/init_di.dart';
 import '../../../../core/enums/theme_enum.dart';
-import '../../../domain/usecases/settings/set_theme_use_case.dart';
+import '../../../domain/usecases/profile/set_theme_use_case.dart';
 
 class ThemeProvider extends ChangeNotifier {
   final SetThemeUseCase setThemeUseCase;

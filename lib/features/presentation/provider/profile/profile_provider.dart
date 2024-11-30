@@ -1,16 +1,22 @@
-import 'package:ecommerceapiapp/features/data/models/user_model.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+import '../../../../core/functions/show_snack_bar.dart';
 import '../../../../core/utils/app_routes.dart';
-import '../../../data/datasources/local/user_data_local_storage.dart';
+
 import '../../../domain/entities/user_entity.dart';
+import '../../../domain/usecases/profile/clear_user_data_use_case.dart';
+import '../../../domain/usecases/profile/get_user_data_use_case.dart';
 
 class ProfileProvider extends ChangeNotifier {
-  final UserDataLocalStorage userDataLocalStorage;
+  final GetUserDataUseCase getUserDataUseCase;
+  final ClearUserDataUseCase clearUserDataUseCase;
   UserEntity? _userEntity;
   bool _isloading = false;
 
-  ProfileProvider(this.userDataLocalStorage) {
+  ProfileProvider({
+    required this.getUserDataUseCase,
+    required this.clearUserDataUseCase,
+  }) {
     getUserData();
   }
 
@@ -24,21 +30,32 @@ class ProfileProvider extends ChangeNotifier {
 
   void getUserData() async {
     setLoading(true);
-    UserModel? user = await userDataLocalStorage.getUserData();
+    final result = getUserDataUseCase.call();
 
-    _userEntity = UserEntity(
-      id: user!.id,
-      userName: user.userName,
-      email: user.email,
-      phoneNumber: user.phoneNumber,
-      createdAt: user.createdAt,
+    result.fold(
+      (failure) {
+        failure.message;
+      },
+      (user) {
+        _userEntity = user;
+      },
     );
 
     setLoading(false);
   }
 
-  void logOut(BuildContext context) {
-    userDataLocalStorage.clearUserData();
-    context.go(AppRoutes.loginView);
+  void logOut(BuildContext context, {required String msg}) {
+    final result = getUserDataUseCase.call();
+    result.fold(
+      (failure) {
+        failure.message;
+        notifyListeners();
+      },
+      (_) {
+        showSnackBar(context, msg: msg);
+        context.go(AppRoutes.loginView);
+        notifyListeners();
+      },
+    );
   }
 }

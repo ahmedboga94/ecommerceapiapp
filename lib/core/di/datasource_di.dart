@@ -1,5 +1,4 @@
-import '../../features/data/datasources/local/settings_local_storage.dart';
-import '../../features/data/datasources/local/user_data_local_storage.dart';
+import '../../features/data/datasources/local/profile_local_storage.dart';
 import '../../features/data/datasources/remote/auth_remote_data_source.dart';
 import 'init_di.dart';
 
@@ -9,9 +8,6 @@ dataSourceDi() async {
       () => AuthRemoteDataSourceImpl(di()));
 
 // Local
-  di.registerLazySingleton<SettingsLocalStorage>(
-      () => SettingsLocalStorageImpl(di()));
-
-  di.registerLazySingleton<UserDataLocalStorage>(
-      () => UserDataLocalStorageImpl(di()));
+  di.registerLazySingleton<ProfileLocalStorage>(
+      () => ProfileLocalStorageImpl(di()));
 }

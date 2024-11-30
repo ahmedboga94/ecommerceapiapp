@@ -4,7 +4,7 @@ import 'package:provider/provider.dart';
 import '../../../../../core/constants/app_colors.dart';
 import '../../../../../core/constants/app_text_styles.dart';
 import '../../../../../core/enums/theme_enum.dart';
-import '../../../provider/settings/theme_provider.dart';
+import '../../../provider/profile/theme_provider.dart';
 
 class ThemeCard extends StatelessWidget {
   const ThemeCard({super.key});

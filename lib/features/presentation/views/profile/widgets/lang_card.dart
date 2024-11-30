@@ -4,7 +4,7 @@ import 'package:go_router/go_router.dart';
 import 'package:provider/provider.dart';
 import '../../../../../core/constants/app_colors.dart';
 import '../../../../../core/constants/app_text_styles.dart';
-import '../../../provider/settings/language_provider.dart';
+import '../../../provider/profile/language_provider.dart';
 
 class LangCard extends StatelessWidget {
   const LangCard({super.key});
