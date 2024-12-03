@@ -7,15 +7,22 @@ class HomeView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Scaffold(
+    return Scaffold(
       body: SafeArea(
         child: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 12),
           child: Column(
             children: [
-              SearchAndNotifications(),
-              Center(
-                child: Text("Home View"),
+              const SearchAndNotifications(),
+              Padding(
+                padding: const EdgeInsets.all(12),
+                child: Container(
+                  height: 150,
+                  decoration: BoxDecoration(
+                    color: Colors.red,
+                    borderRadius: BorderRadius.circular(18),
+                  ),
+                ),
               ),
             ],
           ),
