@@ -13,4 +13,5 @@ class AppStrings {
   static String passwordValidate = r"^(?=.*?[a-z])(?=.*?[0-9]).{8,}$";
 
   static const String userData = "userData";
+  static const String mainPage = "mainPage";
 }

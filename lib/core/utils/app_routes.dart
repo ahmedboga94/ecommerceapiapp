@@ -7,9 +7,10 @@ import '../../features/presentation/views/auth/reset_password_verfiy/reset_passw
 import '../../features/presentation/views/auth/signup/sign_up_view.dart';
 import '../../features/presentation/views/auth/verfiy_code/verfiy_code_view.dart';
 import '../../features/presentation/views/edit_profile/edit_profile_view.dart';
-import '../../features/presentation/views/main_view/main_view.dart';
+import '../../features/presentation/views/main_app/main_view.dart';
 import '../../features/presentation/views/onboarding/on_bording_view.dart';
 import '../../features/presentation/views/quick_settings/quick_settings_view.dart';
+import '../constants/app_strings.dart';
 import '../di/init_di.dart';
 
 class AppRoutes {
@@ -24,14 +25,16 @@ class AppRoutes {
   static const String mainView = "/mainView";
   static const String editProfile = "/editProfile";
 
-  static final setStartUpPage = di<SharedPreferences>().getBool("mainView");
+  static final setStartUpPage =
+      di<SharedPreferences>().getBool(AppStrings.mainPage);
 
   static final GoRouter router = GoRouter(
     routes: [
       GoRoute(
         path: quickSettingsView,
-        builder: (context, state) =>
-            setStartUpPage! ? const MainView() : const QuickSettingsView(),
+        builder: (context, state) => setStartUpPage == true
+            ? const MainView()
+            : const QuickSettingsView(),
       ),
       GoRoute(
         path: onBordingView,

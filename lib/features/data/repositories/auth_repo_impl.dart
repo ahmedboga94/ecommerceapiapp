@@ -11,11 +11,11 @@ import '../datasources/remote/auth_remote_data_source.dart';
 import '../models/user_model.dart';
 
 class AuthRepoImpl implements AuthRepo {
-  final AuthRemoteDataSourceImpl authRemoteDataSourceImpl;
+  final AuthRemoteDataSource authRemoteDataSource;
   final ProfileLocalStorage profileLocalStorage;
   final AppNetworkChecker appNetworkChecker;
   AuthRepoImpl({
-    required this.authRemoteDataSourceImpl,
+    required this.authRemoteDataSource,
     required this.profileLocalStorage,
     required this.appNetworkChecker,
   });
@@ -30,7 +30,7 @@ class AuthRepoImpl implements AuthRepo {
           phoneNumber: user.phoneNumber,
           password: user.password,
         );
-        final response = await authRemoteDataSourceImpl.signUp(userModel);
+        final response = await authRemoteDataSource.signUp(userModel);
         if (response["status"] == "success") {
           return right(response);
         } else {
@@ -57,7 +57,7 @@ class AuthRepoImpl implements AuthRepo {
       try {
         final userModel =
             UserModel(email: user.email, verfiyCode: user.verfiyCode);
-        final response = await authRemoteDataSourceImpl.verfiyCode(userModel);
+        final response = await authRemoteDataSource.verfiyCode(userModel);
         if (response["status"] == "success") {
           return right(response);
         } else {
@@ -82,7 +82,7 @@ class AuthRepoImpl implements AuthRepo {
     if (await appNetworkChecker.isConnected) {
       try {
         final userModel = UserModel(email: user.email, password: user.password);
-        final response = await authRemoteDataSourceImpl.login(userModel);
+        final response = await authRemoteDataSource.login(userModel);
         if (response["status"] == "success") {
           profileLocalStorage.saveUserData(response["data"]);
           return right(response);
@@ -109,8 +109,7 @@ class AuthRepoImpl implements AuthRepo {
     if (await appNetworkChecker.isConnected) {
       try {
         final userModel = UserModel(email: user.email);
-        final response =
-            await authRemoteDataSourceImpl.forgetPassword(userModel);
+        final response = await authRemoteDataSource.forgetPassword(userModel);
         if (response["status"] == "success") {
           return right(response);
         } else {
@@ -137,8 +136,7 @@ class AuthRepoImpl implements AuthRepo {
       try {
         final userModel =
             UserModel(email: user.email, verfiyCode: user.verfiyCode);
-        final response =
-            await authRemoteDataSourceImpl.resetPassVerfiy(userModel);
+        final response = await authRemoteDataSource.resetPassVerfiy(userModel);
         if (response["status"] == "success") {
           return right(response);
         } else {
@@ -164,8 +162,7 @@ class AuthRepoImpl implements AuthRepo {
     if (await appNetworkChecker.isConnected) {
       try {
         final userModel = UserModel(email: user.email, password: user.password);
-        final response =
-            await authRemoteDataSourceImpl.resetPassSuccess(userModel);
+        final response = await authRemoteDataSource.resetPassSuccess(userModel);
         if (response["status"] == "success") {
           return right(response);
         } else {

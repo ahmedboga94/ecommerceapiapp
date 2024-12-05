@@ -15,7 +15,7 @@ class HomeView extends StatelessWidget {
             children: [
               const SearchAndNotifications(),
               Padding(
-                padding: const EdgeInsets.all(12),
+                padding: const EdgeInsets.symmetric(vertical: 12),
                 child: Container(
                   height: 150,
                   decoration: BoxDecoration(

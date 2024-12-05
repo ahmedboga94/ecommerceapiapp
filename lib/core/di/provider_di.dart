@@ -1,3 +1,5 @@
+import 'package:ecommerceapiapp/features/presentation/provider/home/home_provider.dart';
+
 import '../../features/presentation/provider/auth/forget_password_provider.dart';
 import '../../features/presentation/provider/auth/login_provider.dart';
 import '../../features/presentation/provider/auth/reset_password_provider.dart';
@@ -22,6 +24,9 @@ providerDi() {
   di.registerFactory(() => ResetPasswordVerfiyProvider(di()));
   di.registerFactory(() => ResetPasswordProvider(di()));
 
+  di.registerFactory(() => HomeProvider(
+        getCategoriesUseCase: di(),
+      ));
   di.registerFactory(() => ProfileProvider(
         getUserDataUseCase: di(),
         clearUserDataUseCase: di(),

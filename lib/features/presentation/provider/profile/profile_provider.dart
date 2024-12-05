@@ -45,7 +45,7 @@ class ProfileProvider extends ChangeNotifier {
   }
 
   void logOut(BuildContext context, {required String msg}) {
-    final result = getUserDataUseCase.call();
+    final result = clearUserDataUseCase.call();
     result.fold(
       (failure) {
         failure.message;

@@ -12,7 +12,7 @@ abstract class ProfileLocalStorage {
   void setLanguage(LangEnum deviceLang);
   UserModel? getUserData();
   Future<void> saveUserData(Map<String, dynamic> userData);
-  void clearUserData();
+  Future<void> clearUserData();
 }
 
 class ProfileLocalStorageImpl implements ProfileLocalStorage {
@@ -57,8 +57,10 @@ class ProfileLocalStorageImpl implements ProfileLocalStorage {
   }
 
   @override
-  void clearUserData() {
-    sharedPref.remove(AppStrings.userData);
-    sharedPref.setBool("mainView", false);
+  Future<void> clearUserData() async {
+    await Future.wait([
+      sharedPref.remove(AppStrings.userData),
+      sharedPref.setBool(AppStrings.mainPage, false),
+    ]);
   }
 }

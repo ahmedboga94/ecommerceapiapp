@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:provider/provider.dart';
-import 'package:shared_preferences/shared_preferences.dart';
-import '../../../../core/di/init_di.dart';
 import '../../../../core/utils/app_routes.dart';
 import '../../provider/profile/profile_provider.dart';
 import 'widgets/lang_card.dart';
@@ -37,11 +35,10 @@ class ProfileView extends StatelessWidget {
               const ThemeCard(),
               const LangCard(),
               ElevatedButton(
-                  onPressed: () {
-                    context.go(AppRoutes.loginView);
-                    di<SharedPreferences>().setBool("mainView", false);
-                  },
-                  child: const Text("Log Out"))
+                onPressed: () =>
+                    profileProvider.logOut(context, msg: "Logging out...."),
+                child: const Text("Log Out"),
+              ),
             ],
           )),
         );

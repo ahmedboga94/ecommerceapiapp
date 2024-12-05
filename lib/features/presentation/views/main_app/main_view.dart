@@ -2,7 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import '../../../../core/constants/app_colors.dart';
 import '../../../../core/di/init_di.dart';
-import '../../provider/main/main_view_provider.dart';
+import '../../provider/home/home_provider.dart';
+import '../../provider/main_app/main_view_provider.dart';
 import '../../provider/profile/profile_provider.dart';
 import '../cart/cart_view.dart';
 import '../category/category_view.dart';
@@ -16,8 +17,9 @@ class MainView extends StatelessWidget {
   Widget build(BuildContext context) {
     return MultiProvider(
       providers: [
-        ChangeNotifierProvider(create: (context) => MainViewProvider()),
-        ChangeNotifierProvider(create: (context) => di<ProfileProvider>())
+        ChangeNotifierProvider(create: (_) => MainViewProvider()),
+        ChangeNotifierProvider(create: (_) => di<HomeProvider>()),
+        ChangeNotifierProvider(create: (_) => di<ProfileProvider>())
       ],
       child: Consumer<MainViewProvider>(
         builder: (context, mainViewProvider, child) {

@@ -1,5 +1,3 @@
-import 'dart:convert';
-
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -46,15 +44,9 @@ class LoginProvider extends ChangeNotifier {
         },
         (response) {
           debugPrint("============ ${response["status"]} ============");
-          debugPrint("============ ${response["data"]} ============");
-
-          di<SharedPreferences>().setString(
-            AppStrings.userData,
-            response["data"] != null ? jsonEncode(response["data"]) : "",
-          );
           showSnackBar(context, msg: msg, icon: Icons.check_circle_outline);
           context.go(AppRoutes.mainView);
-          di<SharedPreferences>().setBool("mainView", true);
+          di<SharedPreferences>().setBool(AppStrings.mainPage, true);
         },
       );
 
