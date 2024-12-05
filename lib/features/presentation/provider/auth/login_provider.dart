@@ -26,14 +26,14 @@ class LoginProvider extends ChangeNotifier {
   bool get isPassVisible => _isPassVisible;
   String? get errorMessage => _errorMessage;
 
-  void setLoading(bool val) {
+  void _setLoading(bool val) {
     _isloading = val;
     notifyListeners();
   }
 
   loginWithEmailandPassword(BuildContext context, {required String msg}) async {
     if (_formKey.currentState!.validate()) {
-      setLoading(true);
+      _setLoading(true);
       UserEntity user = UserEntity(email: email, password: password);
 
       final result = await loginUseCase.call(user);
@@ -50,7 +50,7 @@ class LoginProvider extends ChangeNotifier {
         },
       );
 
-      setLoading(false);
+      _setLoading(false);
     }
   }
 

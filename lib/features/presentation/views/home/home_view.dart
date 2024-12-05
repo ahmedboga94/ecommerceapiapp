@@ -1,4 +1,6 @@
+import 'package:ecommerceapiapp/features/presentation/provider/home/home_provider.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 import 'widgets/search_and_notifications.dart';
 
@@ -24,6 +26,26 @@ class HomeView extends StatelessWidget {
                   ),
                 ),
               ),
+              Consumer<HomeProvider>(
+                builder: (context, home, child) {
+                  return home.isLoading
+                      ? const Text("Loooding")
+                      : Row(
+                          children: [
+                            ...List.generate(
+                                home.categories.length,
+                                (index) => Column(
+                                      children: [
+                                        Text(
+                                            "${home.categories[index].categoryNameAr}    "),
+                                        Text(
+                                            "${home.categories[index].categoryName}    "),
+                                      ],
+                                    ))
+                          ],
+                        );
+                },
+              )
             ],
           ),
         ),

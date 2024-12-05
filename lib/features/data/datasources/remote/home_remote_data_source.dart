@@ -13,7 +13,7 @@ class HomeRemoteDataSourceImpl extends HomeRemoteDataSource {
   Future<List<CategoryModel>> getCategories() async {
     Map data = await apiService.get(endPoint: AppServerLinks.homePageUrl);
     List<CategoryModel> cat = [];
-    for (var doc in data.values) {
+    for (var doc in data["categories"]) {
       cat.add(CategoryModel.fromJson(doc as Map<String, dynamic>));
     }
     return cat;

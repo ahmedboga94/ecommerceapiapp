@@ -23,13 +23,13 @@ class ProfileProvider extends ChangeNotifier {
   UserEntity? get userEntity => _userEntity;
   bool get isLoading => _isloading;
 
-  void setLoading(bool val) {
+  void _setLoading(bool val) {
     _isloading = val;
     notifyListeners();
   }
 
   void getUserData() async {
-    setLoading(true);
+    _setLoading(true);
     final result = getUserDataUseCase.call();
 
     result.fold(
@@ -41,7 +41,7 @@ class ProfileProvider extends ChangeNotifier {
       },
     );
 
-    setLoading(false);
+    _setLoading(false);
   }
 
   void logOut(BuildContext context, {required String msg}) {
