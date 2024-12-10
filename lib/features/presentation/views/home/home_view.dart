@@ -1,7 +1,10 @@
-import 'package:ecommerceapiapp/features/presentation/provider/home/home_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-
+import '../../../../core/constants/app_text_styles.dart';
+import '../../provider/home/home_provider.dart';
+import '../../widgets/product_card_widget.dart';
+import 'widgets/categories_list_view.dart';
+import 'widgets/home_banner.dart';
 import 'widgets/search_and_notifications.dart';
 
 class HomeView extends StatelessWidget {
@@ -10,45 +13,45 @@ class HomeView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: SafeArea(
-        child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 12),
-          child: Column(
-            children: [
-              const SearchAndNotifications(),
-              Padding(
-                padding: const EdgeInsets.symmetric(vertical: 12),
-                child: Container(
-                  height: 150,
-                  decoration: BoxDecoration(
-                    color: Colors.red,
-                    borderRadius: BorderRadius.circular(18),
-                  ),
+      body: Consumer<HomeProvider>(
+        builder: (context, homeProvider, child) {
+          return SafeArea(
+            child: SingleChildScrollView(
+              child: Padding(
+                padding:
+                    const EdgeInsets.symmetric(horizontal: 8, vertical: 12),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    const SearchAndNotifications(),
+                    const HomeBanner(),
+                    CategoriesListView(homeProvider),
+                    const Text("Products For You",
+                        style: AppTextStyles.headLineBold),
+                    SizedBox(
+                      height: 290,
+                      child: ListView.builder(
+                        scrollDirection: Axis.horizontal,
+                        itemCount: 10,
+                        itemBuilder: (context, index) {
+                          return ItemCard(
+                            onTap: () {},
+                            favTap: () {},
+                            imageUrl: '',
+                            title: '',
+                            price: 5.1,
+                            isFav: false,
+                            addToCart: () {},
+                          );
+                        },
+                      ),
+                    ),
+                  ],
                 ),
               ),
-              Consumer<HomeProvider>(
-                builder: (context, home, child) {
-                  return home.isLoading
-                      ? const Text("Loooding")
-                      : Row(
-                          children: [
-                            ...List.generate(
-                                home.categories.length,
-                                (index) => Column(
-                                      children: [
-                                        Text(
-                                            "${home.categories[index].categoryNameAr}    "),
-                                        Text(
-                                            "${home.categories[index].categoryName}    "),
-                                      ],
-                                    ))
-                          ],
-                        );
-                },
-              )
-            ],
-          ),
-        ),
+            ),
+          );
+        },
       ),
     );
   }

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+import '../../../../../core/constants/app_colors.dart';
 import '../../../widgets/custom_text_form.dart';
 
 class SearchAndNotifications extends StatelessWidget {
@@ -13,7 +14,8 @@ class SearchAndNotifications extends StatelessWidget {
             child: Container(
           padding: const EdgeInsets.all(6),
           decoration: BoxDecoration(
-              color: Colors.grey[200], borderRadius: BorderRadius.circular(18)),
+              color: AppColors.geryLiteColor.withOpacity(0.5),
+              borderRadius: BorderRadius.circular(18)),
           child: const CustomTextForm(
             hint: "Search",
             icon: Icon(Icons.search),
@@ -23,7 +25,8 @@ class SearchAndNotifications extends StatelessWidget {
         Container(
           padding: const EdgeInsets.all(4),
           decoration: BoxDecoration(
-              color: Colors.grey[200], borderRadius: BorderRadius.circular(18)),
+              color: AppColors.geryLiteColor.withOpacity(0.5),
+              borderRadius: BorderRadius.circular(18)),
           child: IconButton(
               onPressed: () {}, icon: const Icon(Icons.notifications_outlined)),
         )
