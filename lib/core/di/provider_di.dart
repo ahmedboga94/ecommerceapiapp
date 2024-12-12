@@ -26,6 +26,7 @@ providerDi() {
 
   di.registerFactory(() => HomeProvider(
         getCategoriesUseCase: di(),
+        getDiscountItemsUseCase: di(),
       ));
   di.registerFactory(() => ProfileProvider(
         getUserDataUseCase: di(),

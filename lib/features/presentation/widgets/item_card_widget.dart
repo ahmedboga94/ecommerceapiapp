@@ -1,24 +1,23 @@
 import 'package:cached_network_image/cached_network_image.dart';
-import 'package:ecommerceapiapp/core/constants/app_colors.dart';
-import 'package:ecommerceapiapp/core/constants/app_text_styles.dart';
-
 import 'package:flutter/material.dart';
 
+import '../../../core/constants/app_colors.dart';
+import '../../../core/constants/app_server_links.dart';
+import '../../../core/constants/app_text_styles.dart';
+import '../../domain/entities/item_entity.dart';
+
 class ItemCard extends StatelessWidget {
+  final ItemEntity itemEntity;
   final Function() onTap, favTap, addToCart;
-  final String imageUrl, title;
-  final double price;
   final bool isFav;
 
   const ItemCard({
     super.key,
     required this.onTap,
     required this.favTap,
-    required this.imageUrl,
-    required this.title,
-    required this.price,
     required this.isFav,
     required this.addToCart,
+    required this.itemEntity,
   });
 
   @override
@@ -51,7 +50,8 @@ class ItemCard extends StatelessWidget {
                                   child: ClipRRect(
                                       borderRadius: BorderRadius.circular(10),
                                       child: CachedNetworkImage(
-                                          imageUrl: imageUrl,
+                                          imageUrl:
+                                              "${AppServerLinks.itemsImagesPath}${itemEntity.itemImage!}",
                                           placeholder: (context, url) =>
                                               const Center(
                                                   child:
@@ -61,8 +61,9 @@ class ItemCard extends StatelessWidget {
                                           width: widthVar * 0.35,
                                           height: hightVar * 0.17,
                                           fit: BoxFit.cover))))),
-                      Text(title, maxLines: 1, style: AppTextStyles.bold),
-                      Text("${price.toStringAsFixed(2)} L.E.",
+                      Text(itemEntity.itemName!,
+                          maxLines: 1, style: AppTextStyles.bold),
+                      Text("${itemEntity.itemPrice!} L.E.",
                           maxLines: 1,
                           style: AppTextStyles.bold
                               .copyWith(color: AppColors.primeColor)),

@@ -2,8 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import '../../../../core/constants/app_text_styles.dart';
 import '../../provider/home/home_provider.dart';
-import '../../widgets/product_card_widget.dart';
+import '../../widgets/item_card_widget.dart';
 import 'widgets/categories_list_view.dart';
+import 'widgets/discount_Items_list_view.dart';
 import 'widgets/home_banner.dart';
 import 'widgets/search_and_notifications.dart';
 
@@ -28,24 +29,7 @@ class HomeView extends StatelessWidget {
                     CategoriesListView(homeProvider),
                     const Text("Products For You",
                         style: AppTextStyles.headLineBold),
-                    SizedBox(
-                      height: 290,
-                      child: ListView.builder(
-                        scrollDirection: Axis.horizontal,
-                        itemCount: 10,
-                        itemBuilder: (context, index) {
-                          return ItemCard(
-                            onTap: () {},
-                            favTap: () {},
-                            imageUrl: '',
-                            title: '',
-                            price: 5.1,
-                            isFav: false,
-                            addToCart: () {},
-                          );
-                        },
-                      ),
-                    ),
+                    DiscountItemsListView(homeProvider),
                   ],
                 ),
               ),
