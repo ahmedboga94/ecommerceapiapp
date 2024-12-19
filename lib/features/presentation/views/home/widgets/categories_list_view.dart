@@ -20,20 +20,27 @@ class CategoriesListView extends StatelessWidget {
               shrinkWrap: true,
               itemCount: homeProvider.categoriesList.length,
               itemBuilder: (context, index) {
-                return Column(
-                  children: [
-                    Container(
-                      padding: const EdgeInsets.all(6),
-                      decoration: BoxDecoration(
-                          color: AppColors.geryLiteColor,
-                          borderRadius: BorderRadius.circular(18)),
-                      child: SvgPicture.network(
-                        "${AppServerLinks.categoriesImagesPath}${homeProvider.categoriesList[index].categoryImage}",
-                        height: 60,
+                return GestureDetector(
+                  onTap: () {
+                    // homeProvider.itemssByCategory(
+                    //     homeProvider.categoriesList[index].categoryId);
+                  },
+                  child: Column(
+                    children: [
+                      Container(
+                        padding: const EdgeInsets.all(6),
+                        decoration: BoxDecoration(
+                            color: AppColors.geryLiteColor,
+                            borderRadius: BorderRadius.circular(18)),
+                        child: SvgPicture.network(
+                          "${AppServerLinks.categoriesImagesPath}${homeProvider.categoriesList[index].categoryImage}",
+                          height: 60,
+                        ),
                       ),
-                    ),
-                    Text("${homeProvider.categoriesList[index].categoryName}"),
-                  ],
+                      Text(
+                          "${homeProvider.categoriesList[index].categoryName}"),
+                    ],
+                  ),
                 );
               },
               separatorBuilder: (context, index) => const SizedBox(width: 15),
