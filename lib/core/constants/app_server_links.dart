@@ -18,4 +18,5 @@ class AppServerLinks {
 
   // Home
   static const String homePageUrl = "$serverUrl/home.php";
+  static const String itemsUrl = "$serverUrl/items/items.php";
 }

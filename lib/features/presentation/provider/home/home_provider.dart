@@ -38,6 +38,7 @@ class HomeProvider extends ChangeNotifier {
       (response) {
         debugPrint("============ success categories ============");
         _categoriesList = response;
+        notifyListeners();
       },
     );
     _setLoading(false);

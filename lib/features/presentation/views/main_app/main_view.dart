@@ -19,7 +19,8 @@ class MainView extends StatelessWidget {
       providers: [
         ChangeNotifierProvider(create: (_) => MainViewProvider()),
         ChangeNotifierProvider(create: (_) => di<HomeProvider>()),
-        ChangeNotifierProvider(create: (_) => di<ProfileProvider>())
+        // ChangeNotifierProvider(create: (_) => di<CategoryItemsProvider>()),
+        ChangeNotifierProvider(create: (_) => di<ProfileProvider>()),
       ],
       child: Consumer<MainViewProvider>(
         builder: (context, mainViewProvider, child) {

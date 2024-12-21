@@ -5,5 +5,7 @@ import '../entities/item_entity.dart';
 
 abstract class HomeRepo {
   Future<Either<Failure, List<CategoryEntity>>> getGategories();
+  Future<Either<Failure, List<ItemEntity>>> getCategoryItems(
+      CategoryEntity selectedCategory);
   Future<Either<Failure, List<ItemEntity>>> getDiscountItems();
 }

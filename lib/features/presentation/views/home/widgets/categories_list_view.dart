@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:go_router/go_router.dart';
 
 import '../../../../../core/constants/app_colors.dart';
 import '../../../../../core/constants/app_server_links.dart';
+import '../../../../../core/utils/app_routes.dart';
 import '../../../provider/home/home_provider.dart';
 
 class CategoriesListView extends StatelessWidget {
@@ -22,8 +24,8 @@ class CategoriesListView extends StatelessWidget {
               itemBuilder: (context, index) {
                 return GestureDetector(
                   onTap: () {
-                    // homeProvider.itemssByCategory(
-                    //     homeProvider.categoriesList[index].categoryId);
+                    context.push(AppRoutes.categoryItems,
+                        extra: homeProvider.categoriesList[index]);
                   },
                   child: Column(
                     children: [

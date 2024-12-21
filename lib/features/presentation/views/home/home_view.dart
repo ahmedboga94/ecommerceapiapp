@@ -3,7 +3,7 @@ import 'package:provider/provider.dart';
 import '../../../../core/constants/app_text_styles.dart';
 import '../../provider/home/home_provider.dart';
 import 'widgets/categories_list_view.dart';
-import 'widgets/discount_Items_list_view.dart';
+import 'widgets/discount_items_list_view.dart';
 import 'widgets/home_banner.dart';
 import 'widgets/search_and_notifications.dart';
 
@@ -31,6 +31,7 @@ class HomeView extends StatelessWidget {
                         style: AppTextStyles.headLineBold),
                     DiscountItemsListView(homeProvider),
                     const Text("Offers", style: AppTextStyles.headLineBold),
+                    DiscountItemsListView(homeProvider),
                   ],
                 ),
               ),

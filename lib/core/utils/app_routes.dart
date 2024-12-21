@@ -1,12 +1,16 @@
 import 'package:go_router/go_router.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import '../../features/domain/entities/category_entity.dart';
+import '../../features/domain/entities/item_entity.dart';
 import '../../features/presentation/views/auth/forget_password/forget_password_view.dart';
 import '../../features/presentation/views/auth/login/login_view.dart';
 import '../../features/presentation/views/auth/reset_password/reset_password_view.dart';
 import '../../features/presentation/views/auth/reset_password_verfiy/reset_password_verfiy.dart';
 import '../../features/presentation/views/auth/signup/sign_up_view.dart';
 import '../../features/presentation/views/auth/verfiy_code/verfiy_code_view.dart';
+import '../../features/presentation/views/category_items/category_items_view.dart';
 import '../../features/presentation/views/edit_profile/edit_profile_view.dart';
+import '../../features/presentation/views/items_details/items_details_view.dart';
 import '../../features/presentation/views/main_app/main_view.dart';
 import '../../features/presentation/views/onboarding/on_bording_view.dart';
 import '../../features/presentation/views/quick_settings/quick_settings_view.dart';
@@ -24,6 +28,8 @@ class AppRoutes {
   static const String resetPasswordSccuessView = "/resetPasswordSccuessView";
   static const String mainView = "/mainView";
   static const String editProfile = "/editProfile";
+  static const String categoryItems = "/categoryItems";
+  static const String itemDetails = "/itemDetails";
 
   static final setStartUpPage =
       di<SharedPreferences>().getBool(AppStrings.mainPage);
@@ -81,14 +87,20 @@ class AppRoutes {
         path: editProfile,
         builder: (context, state) => const EditProfileView(),
       ),
-
-      // GoRoute(
-      //   path: noteDetailsView,
-      //   builder: (context, state) {
-      //     final note = state.extra as NoteEntity;
-      //     return NoteDetailsView(noteEntity: note);
-      //   },
-      // ),
+      GoRoute(
+        path: categoryItems,
+        builder: (context, state) {
+          final categories = state.extra as CategoryEntity;
+          return CategoryItemsView(categoryEntity: categories);
+        },
+      ),
+      GoRoute(
+        path: itemDetails,
+        builder: (context, state) {
+          final items = state.extra as ItemEntity;
+          return ItemsDetailsView(itemEntity: items);
+        },
+      ),
     ],
   );
 }
