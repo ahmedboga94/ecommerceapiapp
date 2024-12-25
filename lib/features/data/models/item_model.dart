@@ -35,7 +35,6 @@ class ItemModel extends ItemEntity {
 
   Map<String, dynamic> toJson() {
     return {
-      "item_id": itemId,
       "item_name": itemName,
       "item_name_ar": itemNameAr,
       "item_description": itemDescription,
@@ -45,7 +44,6 @@ class ItemModel extends ItemEntity {
       "item_active": itemActive,
       "item_price": itemPrice,
       "item_discount": itemDiscount,
-      "item_created": itemCreated,
       "item_category": itemCategory,
     };
   }

@@ -3,6 +3,7 @@ import 'package:go_router/go_router.dart';
 import 'package:provider/provider.dart';
 import '../../../../core/utils/app_routes.dart';
 import '../../provider/profile/profile_provider.dart';
+import 'widgets/favorites_card.dart';
 import 'widgets/lang_card.dart';
 import 'widgets/profile_pic.dart';
 import 'widgets/theme_card.dart';
@@ -32,6 +33,7 @@ class ProfileView extends StatelessWidget {
               Text(!profileProvider.isLoading
                   ? profileProvider.userEntity!.email!
                   : ""),
+              const FavoritesCard(),
               const ThemeCard(),
               const LangCard(),
               ElevatedButton(

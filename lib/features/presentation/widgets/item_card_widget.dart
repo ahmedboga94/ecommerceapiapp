@@ -86,23 +86,16 @@ class ItemCard extends StatelessWidget {
               left: 0,
               top: 0,
               child: IconButton(
-                  icon: isFav
-                      ? ClipRRect(
-                          borderRadius: BorderRadius.circular(20),
-                          child: Container(
-                              width: 32,
-                              height: 32,
-                              color: AppColors.primeColor,
-                              child: const Icon(Icons.favorite_border_rounded,
-                                  color: Colors.white, size: 31)))
-                      : ClipRRect(
-                          borderRadius: BorderRadius.circular(15),
-                          child: Container(
-                              width: 32,
-                              height: 32,
-                              color: Colors.grey,
-                              child: const Icon(Icons.heart_broken_rounded,
-                                  color: Colors.white, size: 31))),
+                  icon: ClipRRect(
+                    borderRadius: BorderRadius.circular(20),
+                    child: Container(
+                      width: 32,
+                      height: 32,
+                      color: isFav ? AppColors.primeColor : Colors.grey,
+                      child: const Icon(Icons.favorite,
+                          color: Colors.white, size: 28),
+                    ),
+                  ),
                   onPressed: favTap),
             ),
           ],

@@ -18,5 +18,9 @@ repoDi() {
         appNetworkChecker: di(),
       ));
 
-  di.registerLazySingleton<ProfileRepo>(() => ProfileRepoImpl(di()));
+  di.registerLazySingleton<ProfileRepo>(() => ProfileRepoImpl(
+        profileLocalStorage: di(),
+        profileRemoteDataSource: di(),
+        appNetworkChecker: di(),
+      ));
 }

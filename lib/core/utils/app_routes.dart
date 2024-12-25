@@ -10,6 +10,7 @@ import '../../features/presentation/views/auth/signup/sign_up_view.dart';
 import '../../features/presentation/views/auth/verfiy_code/verfiy_code_view.dart';
 import '../../features/presentation/views/category_items/category_items_view.dart';
 import '../../features/presentation/views/edit_profile/edit_profile_view.dart';
+import '../../features/presentation/views/favorites/favorites_view.dart';
 import '../../features/presentation/views/item_details/item_details_view.dart';
 import '../../features/presentation/views/main_app/main_view.dart';
 import '../../features/presentation/views/onboarding/on_bording_view.dart';
@@ -30,6 +31,7 @@ class AppRoutes {
   static const String editProfile = "/editProfile";
   static const String categoryItems = "/categoryItems";
   static const String itemDetails = "/itemDetails";
+  static const String favoritesView = "/favoritesView";
 
   static final setStartUpPage =
       di<SharedPreferences>().getBool(AppStrings.mainPage);
@@ -99,6 +101,12 @@ class AppRoutes {
         builder: (context, state) {
           final items = state.extra as ItemEntity;
           return ItemDetailsView(itemEntity: items);
+        },
+      ),
+      GoRoute(
+        path: favoritesView,
+        builder: (context, state) {
+          return const FavoritesView();
         },
       ),
     ],

@@ -10,6 +10,7 @@ class HomeProvider extends ChangeNotifier {
   List<CategoryEntity> _categoriesList = [];
   List<ItemEntity> _itemsList = [];
   bool _isloading = false;
+  String? _errorMessage;
 
   HomeProvider({
     required this.getCategoriesUseCase,
@@ -22,6 +23,7 @@ class HomeProvider extends ChangeNotifier {
   List<CategoryEntity> get categoriesList => _categoriesList;
   List<ItemEntity> get itemsList => _itemsList;
   bool get isLoading => _isloading;
+  String? get errorMessage => _errorMessage;
 
   void _setLoading(bool val) {
     _isloading = val;
@@ -34,6 +36,7 @@ class HomeProvider extends ChangeNotifier {
     result.fold(
       (failure) {
         debugPrint("============ ${failure.message} ============");
+        _errorMessage = failure.message;
       },
       (response) {
         debugPrint("============ success categories ============");
@@ -57,5 +60,15 @@ class HomeProvider extends ChangeNotifier {
       },
     );
     _setLoading(false);
+  }
+
+  Future<void> refreshHome() async {
+    getGategories();
+    getDiscountItems();
+  }
+
+  void clearErrorMessage() {
+    _errorMessage = null;
+    notifyListeners();
   }
 }

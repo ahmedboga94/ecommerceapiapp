@@ -6,6 +6,7 @@ import '../../features/presentation/provider/auth/sign_up_provider.dart';
 import '../../features/presentation/provider/auth/verfiy_code_provider.dart';
 import '../../features/presentation/provider/category_items/category_items_provider.dart';
 import '../../features/presentation/provider/home/home_provider.dart';
+import '../../features/presentation/provider/profile/favorite_provider.dart';
 import '../../features/presentation/provider/profile/profile_provider.dart';
 import '../../features/presentation/provider/profile/language_provider.dart';
 import '../../features/presentation/provider/profile/theme_provider.dart';
@@ -38,4 +39,6 @@ providerDi() {
         getUserDataUseCase: di(),
         clearUserDataUseCase: di(),
       ));
+
+  di.registerFactory(() => FavoriteProvider(di()));
 }

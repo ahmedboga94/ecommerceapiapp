@@ -9,6 +9,7 @@ import '../../features/domain/usecases/home/get_category_items_use_case.dart';
 import '../../features/domain/usecases/home/get_discount_items_use_case.dart';
 import '../../features/domain/usecases/profile/clear_user_data_use_case.dart';
 import '../../features/domain/usecases/profile/get_user_data_use_case.dart';
+import '../../features/domain/usecases/profile/get_user_favorite_items_use_case.dart';
 import '../../features/domain/usecases/profile/set_language_use_case.dart';
 import '../../features/domain/usecases/profile/set_theme_use_case.dart';
 import 'init_di.dart';
@@ -32,4 +33,5 @@ useCaseDi() async {
   di.registerLazySingleton(() => SetLanguageUseCase(di()));
   di.registerLazySingleton(() => GetUserDataUseCase(di()));
   di.registerLazySingleton(() => ClearUserDataUseCase(di()));
+  di.registerLazySingleton(() => GetUserFavoriteItemsUseCase(di()));
 }
