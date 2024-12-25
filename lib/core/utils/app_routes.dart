@@ -10,7 +10,7 @@ import '../../features/presentation/views/auth/signup/sign_up_view.dart';
 import '../../features/presentation/views/auth/verfiy_code/verfiy_code_view.dart';
 import '../../features/presentation/views/category_items/category_items_view.dart';
 import '../../features/presentation/views/edit_profile/edit_profile_view.dart';
-import '../../features/presentation/views/items_details/items_details_view.dart';
+import '../../features/presentation/views/item_details/item_details_view.dart';
 import '../../features/presentation/views/main_app/main_view.dart';
 import '../../features/presentation/views/onboarding/on_bording_view.dart';
 import '../../features/presentation/views/quick_settings/quick_settings_view.dart';
@@ -98,7 +98,7 @@ class AppRoutes {
         path: itemDetails,
         builder: (context, state) {
           final items = state.extra as ItemEntity;
-          return ItemsDetailsView(itemEntity: items);
+          return ItemDetailsView(itemEntity: items);
         },
       ),
     ],

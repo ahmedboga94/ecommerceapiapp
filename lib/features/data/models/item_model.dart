@@ -1,24 +1,20 @@
 import '../../domain/entities/item_entity.dart';
 
 class ItemModel extends ItemEntity {
-  ItemModel(
-      {super.itemId,
-      super.itemName,
-      super.itemNameAr,
-      super.itemDescription,
-      super.itemDescriptionAr,
-      super.itemImage,
-      super.itemCount,
-      super.itemActive,
-      super.itemPrice,
-      super.itemDiscount,
-      super.itemCreated,
-      super.itemCategory,
-      super.categoryId,
-      super.categoryName,
-      super.categoryNameAr,
-      super.categoryImage,
-      super.categoryCreated});
+  ItemModel({
+    super.itemId,
+    super.itemName,
+    super.itemNameAr,
+    super.itemDescription,
+    super.itemDescriptionAr,
+    super.itemImage,
+    super.itemCount,
+    super.itemActive,
+    super.itemPrice,
+    super.itemDiscount,
+    super.itemCreated,
+    super.itemCategory,
+  });
 
   factory ItemModel.fromJson(Map<String, dynamic> json) {
     return ItemModel(

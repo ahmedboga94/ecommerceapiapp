@@ -1,3 +1,5 @@
+import '../../../core/functions/translate_database.dart';
+
 class ItemEntity {
   String? itemId;
   String? itemName;
@@ -11,11 +13,6 @@ class ItemEntity {
   String? itemDiscount;
   String? itemCreated;
   String? itemCategory;
-  String? categoryId;
-  String? categoryName;
-  String? categoryNameAr;
-  String? categoryImage;
-  String? categoryCreated;
 
   ItemEntity({
     this.itemId,
@@ -30,10 +27,13 @@ class ItemEntity {
     this.itemDiscount,
     this.itemCreated,
     this.itemCategory,
-    this.categoryId,
-    this.categoryName,
-    this.categoryNameAr,
-    this.categoryImage,
-    this.categoryCreated,
   });
+
+  String translatedItemName() {
+    return translateDatabase(itemName!, itemNameAr!);
+  }
+
+  String translatedItemDescription() {
+    return translateDatabase(itemDescription!, itemDescriptionAr!);
+  }
 }

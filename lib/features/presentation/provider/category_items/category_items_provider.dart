@@ -5,7 +5,7 @@ import '../../../domain/usecases/home/get_category_items_use_case.dart';
 
 class CategoryItemsProvider extends ChangeNotifier {
   final GetCategoryItemsUseCase getCategoryItemsUseCase;
-  CategoryEntity selectedCategory;
+  final CategoryEntity selectedCategory;
   List<ItemEntity> _itemsList = [];
 
   bool _isloading = false;
@@ -19,7 +19,6 @@ class CategoryItemsProvider extends ChangeNotifier {
 
   List<ItemEntity> get itemsList => _itemsList;
   bool get isLoading => _isloading;
-  // CategoryEntity? get selectedCategory => _selectedCategory;
 
   void _setLoading(bool val) {
     _isloading = val;

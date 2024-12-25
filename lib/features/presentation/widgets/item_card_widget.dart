@@ -1,19 +1,20 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 
 import '../../../core/constants/app_colors.dart';
 import '../../../core/constants/app_server_links.dart';
 import '../../../core/constants/app_text_styles.dart';
+import '../../../core/utils/app_routes.dart';
 import '../../domain/entities/item_entity.dart';
 
 class ItemCard extends StatelessWidget {
   final ItemEntity itemEntity;
-  final Function() onTap, favTap, addToCart;
+  final Function() favTap, addToCart;
   final bool isFav;
 
   const ItemCard({
     super.key,
-    required this.onTap,
     required this.favTap,
     required this.isFav,
     required this.addToCart,
@@ -25,7 +26,7 @@ class ItemCard extends StatelessWidget {
     var widthVar = MediaQuery.of(context).size.width;
     var hightVar = MediaQuery.of(context).size.height;
     return GestureDetector(
-      onTap: onTap,
+      onTap: () => context.push(AppRoutes.itemDetails, extra: itemEntity),
       child: Center(
         child: Stack(
           children: [
@@ -51,7 +52,8 @@ class ItemCard extends StatelessWidget {
                                       borderRadius: BorderRadius.circular(10),
                                       child: CachedNetworkImage(
                                           imageUrl:
-                                              "${AppServerLinks.itemsImagesPath}${itemEntity.itemImage!}",
+                                              AppServerLinks.itemsImagesPath +
+                                                  itemEntity.itemImage!,
                                           placeholder: (context, url) =>
                                               const Center(
                                                   child:
@@ -61,7 +63,7 @@ class ItemCard extends StatelessWidget {
                                           width: widthVar * 0.35,
                                           height: hightVar * 0.17,
                                           fit: BoxFit.cover))))),
-                      Text(itemEntity.itemName!,
+                      Text(itemEntity.translatedItemName(),
                           maxLines: 1, style: AppTextStyles.bold),
                       Text("${itemEntity.itemPrice!} L.E.",
                           maxLines: 1,

@@ -39,8 +39,8 @@ class CategoriesListView extends StatelessWidget {
                           height: 60,
                         ),
                       ),
-                      Text(
-                          "${homeProvider.categoriesList[index].categoryName}"),
+                      Text(homeProvider.categoriesList[index]
+                          .translatedCategoryName()),
                     ],
                   ),
                 );

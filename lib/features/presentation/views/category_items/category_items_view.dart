@@ -16,7 +16,7 @@ class CategoryItemsView extends StatelessWidget {
       create: (_) => CategoryItemsProvider(
           getCategoryItemsUseCase: di(), selectedCategory: categoryEntity),
       child: Scaffold(
-        appBar: AppBar(title: Text(categoryEntity.categoryName!)),
+        appBar: AppBar(title: Text(categoryEntity.translatedCategoryName())),
         body: Consumer<CategoryItemsProvider>(
           builder: (context, categoryItemsProvider, child) {
             return categoryItemsProvider.isLoading
@@ -33,7 +33,6 @@ class CategoryItemsView extends StatelessWidget {
                         itemBuilder: (context, index) {
                           return ItemCard(
                             itemEntity: categoryItemsProvider.itemsList[index],
-                            onTap: () {},
                             favTap: () {},
                             isFav: false,
                             addToCart: () {},

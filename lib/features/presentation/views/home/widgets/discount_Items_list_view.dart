@@ -19,7 +19,6 @@ class DiscountItemsListView extends StatelessWidget {
               itemBuilder: (context, index) {
                 return ItemCard(
                   itemEntity: homeProvider.itemsList[index],
-                  onTap: () {},
                   favTap: () {},
                   isFav: false,
                   addToCart: () {},

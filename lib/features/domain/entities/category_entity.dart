@@ -1,3 +1,5 @@
+import '../../../core/functions/translate_database.dart';
+
 class CategoryEntity {
   String? categoryId;
   String? categoryName;
@@ -12,4 +14,8 @@ class CategoryEntity {
     this.categoryImage,
     this.categoryCreated,
   });
+
+  String translatedCategoryName() {
+    return translateDatabase(categoryName!, categoryNameAr!);
+  }
 }
