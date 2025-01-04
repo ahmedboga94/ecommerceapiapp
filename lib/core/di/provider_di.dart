@@ -40,5 +40,8 @@ providerDi() {
         clearUserDataUseCase: di(),
       ));
 
-  di.registerFactory(() => FavoriteProvider(di()));
+  di.registerFactory(() => FavoriteProvider(
+        getUserFavoriteItemsUseCase: di(),
+        userId: di(),
+      ));
 }

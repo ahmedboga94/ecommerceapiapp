@@ -2,6 +2,7 @@ import 'package:go_router/go_router.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import '../../features/domain/entities/category_entity.dart';
 import '../../features/domain/entities/item_entity.dart';
+import '../../features/domain/entities/user_entity.dart';
 import '../../features/presentation/views/auth/forget_password/forget_password_view.dart';
 import '../../features/presentation/views/auth/login/login_view.dart';
 import '../../features/presentation/views/auth/reset_password/reset_password_view.dart';
@@ -106,7 +107,8 @@ class AppRoutes {
       GoRoute(
         path: favoritesView,
         builder: (context, state) {
-          return const FavoritesView();
+          final user = state.extra as UserEntity;
+          return FavoritesView(userEntity: user);
         },
       ),
     ],

@@ -3,11 +3,11 @@ import 'package:go_router/go_router.dart';
 
 import '../../../../../core/constants/app_text_styles.dart';
 import '../../../../../core/utils/app_routes.dart';
+import '../../../../domain/entities/user_entity.dart';
 
 class FavoritesCard extends StatelessWidget {
-  const FavoritesCard({
-    super.key,
-  });
+  final UserEntity userEntity;
+  const FavoritesCard({super.key, required this.userEntity});
 
   @override
   Widget build(BuildContext context) {
@@ -16,7 +16,7 @@ class FavoritesCard extends StatelessWidget {
         title: const Text("Favorites", style: AppTextStyles.bold),
         subtitle: const Text("View your favorite items"),
         leading: const Icon(Icons.favorite, size: 30),
-        onTap: () => context.push(AppRoutes.favoritesView),
+        onTap: () => context.push(AppRoutes.favoritesView, extra: userEntity),
       ),
     );
   }

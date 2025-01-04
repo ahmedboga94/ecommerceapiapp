@@ -1,9 +1,10 @@
 import '../../../../core/constants/app_server_links.dart';
 import '../../../../core/services/api_service.dart';
+import '../../models/favorite_model.dart';
 import '../../models/item_model.dart';
 
 abstract class ProfileRemoteDataSource {
-  Future<List<ItemModel>> getUserFavoriteItems();
+  Future<List<ItemModel>> getUserFavoriteItems(FavoriteModel favoriteModel);
 }
 
 class ProfileRemoteDataSourceImpl extends ProfileRemoteDataSource {
@@ -11,12 +12,11 @@ class ProfileRemoteDataSourceImpl extends ProfileRemoteDataSource {
   ProfileRemoteDataSourceImpl(this.apiService);
 
   @override
-  Future<List<ItemModel>> getUserFavoriteItems() async {
+  Future<List<ItemModel>> getUserFavoriteItems(
+      FavoriteModel favoriteModel) async {
     Map data = await apiService.post(
       endPoint: AppServerLinks.viewFavorites,
-      body: {
-        "favorite_userid": "61",
-      },
+      body: favoriteModel.toJson(),
     );
     List<ItemModel> list = [];
     for (var doc in data["data"]) {

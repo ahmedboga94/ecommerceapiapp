@@ -5,11 +5,13 @@ import '../../../../core/enums/theme_enum.dart';
 import '../../../core/enums/language_enum.dart';
 import '../../../core/services/app_network_checker.dart';
 import '../../../core/utils/failure.dart';
+import '../../domain/entities/favorite_entity.dart';
 import '../../domain/entities/item_entity.dart';
 import '../../domain/entities/user_entity.dart';
 import '../../domain/repositories/profile_repo.dart';
 import '../datasources/local/profile_local_storage.dart';
 import '../datasources/remote/profile_remote_data_source.dart';
+import '../models/favorite_model.dart';
 import '../models/user_model.dart';
 
 class ProfileRepoImpl implements ProfileRepo {
@@ -71,10 +73,13 @@ class ProfileRepoImpl implements ProfileRepo {
   }
 
   @override
-  Future<Either<Failure, List<ItemEntity>>> getUserFavoriteItems() async {
+  Future<Either<Failure, List<ItemEntity>>> getUserFavoriteItems(
+      FavoriteEntity favouriteEntity) async {
     if (await appNetworkChecker.isConnected) {
       try {
-        final response = await profileRemoteDataSource.getUserFavoriteItems();
+        final favorite = FavoriteModel(userId: favouriteEntity.userId);
+        final response =
+            await profileRemoteDataSource.getUserFavoriteItems(favorite);
         return right(response);
       } catch (e) {
         if (e is DioException) {

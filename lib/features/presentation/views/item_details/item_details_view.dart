@@ -77,6 +77,7 @@ class ItemDetailsView extends StatelessWidget {
                     right: isLanguage() ? null : 10,
                     left: isLanguage() ? 10 : null,
                     child: Container(
+                      margin: const EdgeInsets.only(top: 10),
                       decoration: BoxDecoration(
                           color: AppColors.primeColor,
                           borderRadius: BorderRadius.circular(50)),

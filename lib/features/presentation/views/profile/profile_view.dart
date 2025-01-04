@@ -33,7 +33,7 @@ class ProfileView extends StatelessWidget {
               Text(!profileProvider.isLoading
                   ? profileProvider.userEntity!.email!
                   : ""),
-              const FavoritesCard(),
+              FavoritesCard(userEntity: profileProvider.userEntity!),
               const ThemeCard(),
               const LangCard(),
               ElevatedButton(
