@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-
 import '../../../provider/home/home_provider.dart';
 import '../../../widgets/item_card_widget.dart';
 
@@ -19,8 +18,6 @@ class DiscountItemsListView extends StatelessWidget {
               itemBuilder: (context, index) {
                 return ItemCard(
                   itemEntity: homeProvider.itemsList[index],
-                  favTap: () {},
-                  isFav: false,
                   addToCart: () {},
                 );
               },

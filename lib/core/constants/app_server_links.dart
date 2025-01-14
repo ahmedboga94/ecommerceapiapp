@@ -1,6 +1,6 @@
 class AppServerLinks {
   static const String serverUrl =
-      "https://bogatool.freewebhostmost.com/ecommerceapiapp";
+      "https://boga.freewebhostmost.com/ecommerceapiapp";
 
   // Images Path
   static const String categoriesImagesPath = "$serverUrl/upload/categories/";

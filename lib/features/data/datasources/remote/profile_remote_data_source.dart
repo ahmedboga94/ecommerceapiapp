@@ -5,6 +5,8 @@ import '../../models/item_model.dart';
 
 abstract class ProfileRemoteDataSource {
   Future<List<ItemModel>> getUserFavoriteItems(FavoriteModel favoriteModel);
+  Future<Map<String, dynamic>>  addFavoriteItems(FavoriteModel favoriteModel);
+  Future<Map<String, dynamic>>  removeFavoriteItems(FavoriteModel favoriteModel);
 }
 
 class ProfileRemoteDataSourceImpl extends ProfileRemoteDataSource {
@@ -23,5 +25,23 @@ class ProfileRemoteDataSourceImpl extends ProfileRemoteDataSource {
       list.add(ItemModel.fromJson(doc as Map<String, dynamic>));
     }
     return list;
+  }
+
+  @override
+  Future<Map<String, dynamic>>  addFavoriteItems(FavoriteModel favoriteModel) async {
+    var response = await apiService.post(
+      endPoint: AppServerLinks.addFavorite,
+      body: favoriteModel.toJson(),
+    );
+    return response;
+  }
+
+  @override
+  Future<Map<String, dynamic>>  removeFavoriteItems(FavoriteModel favoriteModel) async {
+    var response = await apiService.post(
+      endPoint: AppServerLinks.removeFavorite,
+      body: favoriteModel.toJson(),
+    );
+    return response;
   }
 }

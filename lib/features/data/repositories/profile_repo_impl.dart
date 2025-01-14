@@ -74,12 +74,60 @@ class ProfileRepoImpl implements ProfileRepo {
 
   @override
   Future<Either<Failure, List<ItemEntity>>> getUserFavoriteItems(
-      FavoriteEntity favouriteEntity) async {
+      FavoriteEntity favoriteEntity) async {
     if (await appNetworkChecker.isConnected) {
       try {
-        final favorite = FavoriteModel(userId: favouriteEntity.userId);
+        final favorite = FavoriteModel(userId: favoriteEntity.userId);
         final response =
             await profileRemoteDataSource.getUserFavoriteItems(favorite);
+        return right(response);
+      } catch (e) {
+        if (e is DioException) {
+          return left(ServerFaliure.fromDioError(e));
+        } else {
+          return left(ServerFaliure(message: "$e"));
+        }
+      }
+    } else {
+      return left(
+        OfflineFailure(message: "Your Device is not connecting to Internet"),
+      );
+    }
+  }
+
+  @override
+  Future<Either<Failure, Map<String, dynamic>>> addFavoriteItems(
+      FavoriteEntity favoriteEntity) async {
+    if (await appNetworkChecker.isConnected) {
+      try {
+        final favorite = FavoriteModel(
+            userId: favoriteEntity.userId, itemId: favoriteEntity.itemId);
+        final response =
+            await profileRemoteDataSource.addFavoriteItems(favorite);
+        return right(response);
+      } catch (e) {
+        if (e is DioException) {
+          return left(ServerFaliure.fromDioError(e));
+        } else {
+          return left(ServerFaliure(message: "$e"));
+        }
+      }
+    } else {
+      return left(
+        OfflineFailure(message: "Your Device is not connecting to Internet"),
+      );
+    }
+  }
+
+  @override
+  Future<Either<Failure, Map<String, dynamic>>> removeFavoriteItems(
+      FavoriteEntity favoriteEntity) async {
+    if (await appNetworkChecker.isConnected) {
+      try {
+        final favorite = FavoriteModel(
+            userId: favoriteEntity.userId, itemId: favoriteEntity.itemId);
+        final response =
+            await profileRemoteDataSource.removeFavoriteItems(favorite);
         return right(response);
       } catch (e) {
         if (e is DioException) {

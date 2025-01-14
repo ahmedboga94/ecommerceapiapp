@@ -1,22 +1,21 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+import 'package:provider/provider.dart';
 
 import '../../../core/constants/app_colors.dart';
 import '../../../core/constants/app_server_links.dart';
 import '../../../core/constants/app_text_styles.dart';
 import '../../../core/utils/app_routes.dart';
 import '../../domain/entities/item_entity.dart';
+import '../provider/profile/favorite_provider.dart';
 
 class ItemCard extends StatelessWidget {
   final ItemEntity itemEntity;
-  final Function() favTap, addToCart;
-  final bool isFav;
+  final Function() addToCart;
 
   const ItemCard({
     super.key,
-    required this.favTap,
-    required this.isFav,
     required this.addToCart,
     required this.itemEntity,
   });
@@ -46,7 +45,7 @@ class ItemCard extends StatelessWidget {
                           child: ClipRRect(
                               borderRadius: BorderRadius.circular(10),
                               child: Container(
-                                  // color: context.color.highlight,
+                                  color: Theme.of(context).highlightColor,
                                   padding: const EdgeInsets.all(5),
                                   child: ClipRRect(
                                       borderRadius: BorderRadius.circular(10),
@@ -91,12 +90,20 @@ class ItemCard extends StatelessWidget {
                     child: Container(
                       width: 32,
                       height: 32,
-                      color: isFav ? AppColors.primeColor : Colors.grey,
+                      color: context
+                              .read<FavoriteProvider>()
+                              .checkFavedIco(itemEntity.itemId!)
+                          ? AppColors.primeColor
+                          : Colors.grey,
                       child: const Icon(Icons.favorite,
                           color: Colors.white, size: 28),
                     ),
                   ),
-                  onPressed: favTap),
+                  onPressed: () {
+                    context
+                        .read<FavoriteProvider>()
+                        .checkItemInFav(context, itemEntity.itemId!);
+                  }),
             ),
           ],
         ),

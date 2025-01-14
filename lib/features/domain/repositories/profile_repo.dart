@@ -11,6 +11,10 @@ abstract class ProfileRepo {
   Either<Failure, Unit> clearUserData();
   Future<Either<Failure, List<ItemEntity>>> getUserFavoriteItems(
       FavoriteEntity favoriteEntity);
+  Future<Either<Failure, Map<String, dynamic>>> addFavoriteItems(
+      FavoriteEntity favoriteEntity);
+  Future<Either<Failure, Map<String, dynamic>>> removeFavoriteItems(
+      FavoriteEntity favoriteEntity);
   Either<Failure, Unit> setTheme(ThemeEnum theme);
   Either<Failure, Unit> setLanguage(LangEnum lang);
 }

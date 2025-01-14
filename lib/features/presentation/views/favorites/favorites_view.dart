@@ -1,23 +1,19 @@
-import 'package:ecommerceapiapp/features/presentation/views/favorites/widgets/fav_item_card.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:provider/provider.dart';
 import '../../../../core/di/init_di.dart';
+import '../../../../core/functions/show_snack_bar.dart';
 import '../../../../core/utils/app_routes.dart';
-import '../../../domain/entities/user_entity.dart';
-import '../../../domain/usecases/profile/get_user_favorite_items_use_case.dart';
 import '../../provider/profile/favorite_provider.dart';
+import 'widgets/fav_item_card.dart';
 
 class FavoritesView extends StatelessWidget {
-  final UserEntity userEntity;
-  const FavoritesView({super.key, required this.userEntity});
+  const FavoritesView({super.key});
 
   @override
   Widget build(BuildContext context) {
     return ChangeNotifierProvider(
-      create: (context) => FavoriteProvider(
-          getUserFavoriteItemsUseCase: di<GetUserFavoriteItemsUseCase>(),
-          userId: userEntity.id!),
+      create: (context) => di<FavoriteProvider>(),
       child: Consumer<FavoriteProvider>(
         builder: (context, favoriteProvider, child) {
           return Scaffold(
@@ -34,7 +30,12 @@ class FavoritesView extends StatelessWidget {
                                 extra: favoriteProvider.itemsList[index]),
                             child: FavItemCard(
                               itemEntity: favoriteProvider.itemsList[index],
-                              deleteTap: () {},
+                              deleteTap: () {
+                                favoriteProvider.removeFromFavorites(
+                                    favoriteProvider.itemsList[index].itemId!);
+                                showSnackBar(context,
+                                    msg: "Removed from favorite");
+                              },
                             ),
                           );
                         },

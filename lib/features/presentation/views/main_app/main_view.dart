@@ -4,6 +4,7 @@ import '../../../../core/constants/app_colors.dart';
 import '../../../../core/di/init_di.dart';
 import '../../provider/home/home_provider.dart';
 import '../../provider/main_app/main_view_provider.dart';
+import '../../provider/profile/favorite_provider.dart';
 import '../../provider/profile/profile_provider.dart';
 import '../cart/cart_view.dart';
 import '../category/category_view.dart';
@@ -19,8 +20,8 @@ class MainView extends StatelessWidget {
       providers: [
         ChangeNotifierProvider(create: (_) => MainViewProvider()),
         ChangeNotifierProvider(create: (_) => di<HomeProvider>()),
-        // ChangeNotifierProvider(create: (_) => di<CategoryItemsProvider>()),
         ChangeNotifierProvider(create: (_) => di<ProfileProvider>()),
+        ChangeNotifierProvider(create: (_) => di<FavoriteProvider>()),
       ],
       child: Consumer<MainViewProvider>(
         builder: (context, mainViewProvider, child) {

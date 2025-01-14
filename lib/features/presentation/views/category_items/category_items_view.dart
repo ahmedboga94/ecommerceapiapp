@@ -33,8 +33,6 @@ class CategoryItemsView extends StatelessWidget {
                         itemBuilder: (context, index) {
                           return ItemCard(
                             itemEntity: categoryItemsProvider.itemsList[index],
-                            favTap: () {},
-                            isFav: false,
                             addToCart: () {},
                           );
                         },

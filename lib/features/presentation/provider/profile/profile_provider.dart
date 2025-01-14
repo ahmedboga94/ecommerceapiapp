@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+import 'package:shared_preferences/shared_preferences.dart';
+import '../../../../core/constants/app_strings.dart';
+import '../../../../core/di/init_di.dart';
 import '../../../../core/functions/show_snack_bar.dart';
 import '../../../../core/utils/app_routes.dart';
 
@@ -38,6 +41,7 @@ class ProfileProvider extends ChangeNotifier {
       },
       (user) {
         _userEntity = user;
+        di<SharedPreferences>().setString(AppStrings.userId, user!.id!);
       },
     );
 
