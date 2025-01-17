@@ -50,7 +50,7 @@ class FavoriteProvider extends ChangeNotifier {
       (response) {
         debugPrint("============ success items ============");
         _itemsList = response;
-        _favouritesItemIDsList = response.map((e) => e.itemId!).toList();
+        _favouritesItemIDsList = _itemsList.map((e) => e.itemId!).toList();
       },
     );
     _setLoading(false);
