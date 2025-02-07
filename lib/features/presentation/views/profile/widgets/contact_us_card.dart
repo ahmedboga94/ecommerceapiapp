@@ -4,16 +4,16 @@ import 'package:go_router/go_router.dart';
 import '../../../../../core/constants/app_text_styles.dart';
 import '../../../../../core/utils/app_routes.dart';
 
-class FavoritesCard extends StatelessWidget {
-  const FavoritesCard({super.key});
+class ContactUsCard extends StatelessWidget {
+  const ContactUsCard({super.key});
 
   @override
   Widget build(BuildContext context) {
     return Card(
       child: ListTile(
-        title: const Text("Favorites", style: AppTextStyles.bold),
-        subtitle: const Text("Your favorite Products"),
-        leading: const Icon(Icons.favorite, size: 30),
+        title: const Text("Contact Us", style: AppTextStyles.bold),
+        subtitle: const Text("Contact us for any queries"),
+        leading: const Icon(Icons.call, size: 30),
         onTap: () => context.push(AppRoutes.favoritesView),
       ),
     );

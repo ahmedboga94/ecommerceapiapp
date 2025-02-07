@@ -2,6 +2,7 @@ import 'package:go_router/go_router.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import '../../features/domain/entities/category_entity.dart';
 import '../../features/domain/entities/item_entity.dart';
+import '../../features/presentation/views/address/address_view.dart';
 import '../../features/presentation/views/auth/forget_password/forget_password_view.dart';
 import '../../features/presentation/views/auth/login/login_view.dart';
 import '../../features/presentation/views/auth/reset_password/reset_password_view.dart';
@@ -32,6 +33,7 @@ class AppRoutes {
   static const String categoryItems = "/categoryItems";
   static const String itemDetails = "/itemDetails";
   static const String favoritesView = "/favoritesView";
+  static const String addressView = "/addressView";
 
   static final setStartUpPage =
       di<SharedPreferences>().getBool(AppStrings.mainPage);
@@ -107,6 +109,12 @@ class AppRoutes {
         path: favoritesView,
         builder: (context, state) {
           return const FavoritesView();
+        },
+      ),
+      GoRoute(
+        path: addressView,
+        builder: (context, state) {
+          return const AddressView();
         },
       ),
     ],
