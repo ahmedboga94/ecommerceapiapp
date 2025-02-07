@@ -5,12 +5,12 @@ import '../../entities/favorite_entity.dart';
 import '../../repositories/profile_repo.dart';
 
 class RemoveFavoriteItemsUseCase {
-  final ProfileRepo profileRepo;
+  final ProfileRepo _profileRepo;
 
-  RemoveFavoriteItemsUseCase(this.profileRepo);
+  RemoveFavoriteItemsUseCase(this._profileRepo);
 
   Future<Either<Failure, Map<String, dynamic>>> call(
       FavoriteEntity favoriteEntity) {
-    return profileRepo.removeFavoriteItems(favoriteEntity);
+    return _profileRepo.removeFavoriteItems(favoriteEntity);
   }
 }

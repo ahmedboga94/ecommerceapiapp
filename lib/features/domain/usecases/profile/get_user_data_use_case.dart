@@ -5,11 +5,11 @@ import '../../entities/user_entity.dart';
 import '../../repositories/profile_repo.dart';
 
 class GetUserDataUseCase {
-  final ProfileRepo profileRepo;
+  final ProfileRepo _profileRepo;
 
-  GetUserDataUseCase(this.profileRepo);
+  GetUserDataUseCase(this._profileRepo);
 
   Either<Failure, UserEntity?> call() {
-    return profileRepo.getUserData();
+    return _profileRepo.getUserData();
   }
 }

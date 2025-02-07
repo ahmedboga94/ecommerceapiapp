@@ -5,11 +5,11 @@ import '../../entities/category_entity.dart';
 import '../../repositories/home_repo.dart';
 
 class GetCategoriesUseCase {
-  final HomeRepo homeRepo;
+  final HomeRepo _homeRepo;
 
-  GetCategoriesUseCase(this.homeRepo);
+  GetCategoriesUseCase(this._homeRepo);
 
   Future<Either<Failure, List<CategoryEntity>>> call() {
-    return homeRepo.getGategories();
+    return _homeRepo.getGategories();
   }
 }

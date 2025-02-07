@@ -5,12 +5,12 @@ import '../../entities/item_entity.dart';
 import '../../repositories/home_repo.dart';
 
 class GetCategoryItemsUseCase {
-  final HomeRepo homeRepo;
+  final HomeRepo _homeRepo;
 
-  GetCategoryItemsUseCase(this.homeRepo);
+  GetCategoryItemsUseCase(this._homeRepo);
 
   Future<Either<Failure, List<ItemEntity>>> call(
       CategoryEntity selectedCategory) {
-    return homeRepo.getCategoryItems(selectedCategory);
+    return _homeRepo.getCategoryItems(selectedCategory);
   }
 }

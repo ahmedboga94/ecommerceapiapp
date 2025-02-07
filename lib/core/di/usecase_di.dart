@@ -4,6 +4,7 @@ import '../../features/domain/usecases/auth/reset_password_use_case.dart';
 import '../../features/domain/usecases/auth/reset_password_verfiy_use_case.dart';
 import '../../features/domain/usecases/auth/sign_up_use_case.dart';
 import '../../features/domain/usecases/auth/verify_code_use_case.dart';
+import '../../features/domain/usecases/cart/get_cart_items_use_case.dart';
 import '../../features/domain/usecases/home/get_categories_use_case.dart';
 import '../../features/domain/usecases/home/get_category_items_use_case.dart';
 import '../../features/domain/usecases/home/get_discount_items_use_case.dart';
@@ -29,6 +30,9 @@ useCaseDi() async {
   di.registerLazySingleton(() => GetCategoriesUseCase(di()));
   di.registerLazySingleton(() => GetDiscountItemsUseCase(di()));
   di.registerLazySingleton(() => GetCategoryItemsUseCase(di()));
+
+  // Cart
+  di.registerLazySingleton(() => GetCartItemsUseCase(di()));
 
   // Profile
   di.registerLazySingleton(() => SetThemeUseCase(di()));

@@ -5,11 +5,11 @@ import '../../../../core/utils/failure.dart';
 import '../../repositories/profile_repo.dart';
 
 class SetThemeUseCase {
-  final ProfileRepo profileRepo;
+  final ProfileRepo _profileRepo;
 
-  SetThemeUseCase(this.profileRepo);
+  SetThemeUseCase(this._profileRepo);
 
   Either<Failure, Unit> call(ThemeEnum theme) {
-    return profileRepo.setTheme(theme);
+    return _profileRepo.setTheme(theme);
   }
 }

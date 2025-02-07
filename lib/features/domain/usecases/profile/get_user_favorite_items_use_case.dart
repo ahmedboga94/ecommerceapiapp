@@ -6,12 +6,12 @@ import '../../entities/item_entity.dart';
 import '../../repositories/profile_repo.dart';
 
 class GetUserFavoriteItemsUseCase {
-  final ProfileRepo profileRepo;
+  final ProfileRepo _profileRepo;
 
-  GetUserFavoriteItemsUseCase(this.profileRepo);
+  GetUserFavoriteItemsUseCase(this._profileRepo);
 
   Future<Either<Failure, List<ItemEntity>>> call(
       FavoriteEntity favoriteEntity) {
-    return profileRepo.getUserFavoriteItems(favoriteEntity);
+    return _profileRepo.getUserFavoriteItems(favoriteEntity);
   }
 }

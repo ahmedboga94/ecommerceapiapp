@@ -20,6 +20,9 @@ class AppServerLinks {
   static const String homePageUrl = "$serverUrl/home.php";
   static const String itemsUrl = "$serverUrl/items/items.php";
 
+  // Cart
+  static const String viewCart = "$serverUrl/cart/view.php";
+
   // Profile
   static const String viewFavorites = "$serverUrl/favorites/view.php";
   static const String addFavorite = "$serverUrl/favorites/add.php";

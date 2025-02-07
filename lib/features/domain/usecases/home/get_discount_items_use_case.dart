@@ -4,11 +4,11 @@ import '../../entities/item_entity.dart';
 import '../../repositories/home_repo.dart';
 
 class GetDiscountItemsUseCase {
-  final HomeRepo homeRepo;
+  final HomeRepo _homeRepo;
 
-  GetDiscountItemsUseCase(this.homeRepo);
+  GetDiscountItemsUseCase(this._homeRepo);
 
   Future<Either<Failure, List<ItemEntity>>> call() {
-    return homeRepo.getDiscountItems();
+    return _homeRepo.getDiscountItems();
   }
 }

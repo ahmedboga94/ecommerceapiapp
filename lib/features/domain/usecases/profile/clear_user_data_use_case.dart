@@ -3,11 +3,11 @@ import '../../../../core/utils/failure.dart';
 import '../../repositories/profile_repo.dart';
 
 class ClearUserDataUseCase {
-  final ProfileRepo profileRepo;
+  final ProfileRepo _profileRepo;
 
-  ClearUserDataUseCase(this.profileRepo);
+  ClearUserDataUseCase(this._profileRepo);
 
   Either<Failure, Unit> call() {
-    return profileRepo.clearUserData();
+    return _profileRepo.clearUserData();
   }
 }

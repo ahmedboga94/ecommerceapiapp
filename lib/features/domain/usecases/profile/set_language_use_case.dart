@@ -5,11 +5,11 @@ import '../../../../core/utils/failure.dart';
 import '../../repositories/profile_repo.dart';
 
 class SetLanguageUseCase {
-  final ProfileRepo profileRepo;
+  final ProfileRepo _profileRepo;
 
-  SetLanguageUseCase(this.profileRepo);
+  SetLanguageUseCase(this._profileRepo);
 
   Either<Failure, Unit> call(LangEnum lang) {
-    return profileRepo.setLanguage(lang);
+    return _profileRepo.setLanguage(lang);
   }
 }

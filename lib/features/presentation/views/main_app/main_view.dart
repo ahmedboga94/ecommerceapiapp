@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import '../../../../core/constants/app_colors.dart';
 import '../../../../core/di/init_di.dart';
+import '../../provider/cart/cart_provider.dart';
 import '../../provider/home/home_provider.dart';
 import '../../provider/main_app/main_view_provider.dart';
 import '../../provider/profile/favorite_provider.dart';
@@ -20,6 +21,7 @@ class MainView extends StatelessWidget {
       providers: [
         ChangeNotifierProvider(create: (_) => MainViewProvider()),
         ChangeNotifierProvider(create: (_) => di<HomeProvider>()),
+        ChangeNotifierProvider(create: (_) => di<CartProvider>()),
         ChangeNotifierProvider(create: (_) => di<ProfileProvider>()),
         ChangeNotifierProvider(create: (_) => di<FavoriteProvider>()),
       ],

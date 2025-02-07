@@ -4,6 +4,7 @@ import '../../features/presentation/provider/auth/reset_password_provider.dart';
 import '../../features/presentation/provider/auth/reset_password_verfiy_provider.dart';
 import '../../features/presentation/provider/auth/sign_up_provider.dart';
 import '../../features/presentation/provider/auth/verfiy_code_provider.dart';
+import '../../features/presentation/provider/cart/cart_provider.dart';
 import '../../features/presentation/provider/category_items/category_items_provider.dart';
 import '../../features/presentation/provider/home/home_provider.dart';
 import '../../features/presentation/provider/profile/favorite_provider.dart';
@@ -33,6 +34,10 @@ providerDi() {
   di.registerFactory(() => CategoryItemsProvider(
         getCategoryItemsUseCase: di(),
         selectedCategory: di(),
+      ));
+
+  di.registerFactory(() => CartProvider(
+        getCartItemsUseCase: di(),
       ));
 
   di.registerFactory(() => ProfileProvider(
