@@ -18,7 +18,6 @@ class CounterItem extends StatelessWidget {
       children: [
         IconButton(
             padding: EdgeInsets.zero,
-            constraints: const BoxConstraints(),
             onPressed: decrementFunc,
             icon: const Icon(Icons.remove_circle, color: Colors.orange)),
         SizedBox(
@@ -30,7 +29,6 @@ class CounterItem extends StatelessWidget {
         ),
         IconButton(
           padding: EdgeInsets.zero,
-          constraints: const BoxConstraints(),
           onPressed: incrementFunc,
           icon: const Icon(Icons.add_circle, color: Colors.green),
         )
